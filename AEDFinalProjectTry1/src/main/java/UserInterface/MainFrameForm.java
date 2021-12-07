@@ -193,6 +193,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainHospitalPage mhp = new MainHospitalPage();
         jSplitPane1.setRightComponent(mhp);
+
 //        this.setContentPane(mhp);
 //        this.invalidate();
 //        this.validate();
