@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UserInterface.Enterprise;
+package UserInterface.DonorBank;
 
 /**
  *
  * @author harshaljaiswal
  */
-public class Hospital extends javax.swing.JPanel {
+public class MainDonorBankPage extends javax.swing.JPanel {
 
     /**
-     * Creates new form Hospital
+     * Creates new form MainDonorBankPage
      */
-    public Hospital() {
+    public MainDonorBankPage() {
         initComponents();
     }
 
@@ -28,23 +28,23 @@ public class Hospital extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("Hospital");
+        jLabel1.setText("Donor Bank");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(253, 253, 253)
+                .addGap(403, 403, 403)
                 .addComponent(jLabel1)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel1)
-                .addContainerGap(641, Short.MAX_VALUE))
+                .addContainerGap(537, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

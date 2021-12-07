@@ -5,6 +5,13 @@
 package UserInterface;
 
 import Business.Firebase.FirebaseHelper;
+import UserInterface.Administration.MainAdministrationPage;
+import UserInterface.Dispensary.MainDispensaryPage;
+import UserInterface.DonorBank.MainDonorBankPage;
+import UserInterface.Hospital.MainHospitalPage;
+import UserInterface.Lab.MainLabPage;
+import UserInterface.Logistics.MainLogisticsPage;
+import UserInterface.Sponsorer.MainSponsorerPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,14 +42,13 @@ public class MainFrameForm extends javax.swing.JFrame {
         return i;
 
     }
-    
 
     public MainFrameForm() throws IOException, ExecutionException, InterruptedException {
         initComponents();
         this.setSize(1200, 750);
         firebaseHelper = new FirebaseHelper();
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
-        
+
     }
 
     /**
@@ -75,6 +81,11 @@ public class MainFrameForm extends javax.swing.JFrame {
         });
 
         jButton2.setText("Logistics");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Donor Bank");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -180,27 +191,49 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        MainHospitalPage mhp = new MainHospitalPage();
+        jSplitPane1.setRightComponent(mhp);
+//        this.setContentPane(mhp);
+//        this.invalidate();
+//        this.validate();
+//        return;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        MainDonorBankPage mdp = new MainDonorBankPage();
+        jSplitPane1.setRightComponent(mdp);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        MainDispensaryPage mdp =new MainDispensaryPage();
+        jSplitPane1.setRightComponent(mdp);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        MainLabPage mlp = new MainLabPage();
+        jSplitPane1.setRightComponent(mlp);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        MainSponsorerPage msp = new MainSponsorerPage();
+        jSplitPane1.setRightComponent(msp);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        MainAdministrationPage map = new MainAdministrationPage();
+        jSplitPane1.setRightComponent(map);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        MainLogisticsPage mlp = new MainLogisticsPage();
+        jSplitPane1.setRightComponent(mlp);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

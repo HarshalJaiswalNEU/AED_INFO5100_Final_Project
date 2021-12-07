@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UserInterface.Administration;
+package UserInterface.Hospital;
 
 /**
  *
  * @author harshaljaiswal
  */
-public class MainAdministrationPage extends javax.swing.JPanel {
+public class MainHospitalPage extends javax.swing.JPanel {
 
     /**
-     * Creates new form MainAdministrationPage
+     * Creates new form MainHospitalPage
      */
-    public MainAdministrationPage() {
+    public MainHospitalPage() {
         initComponents();
     }
 
@@ -29,23 +29,23 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("Administration");
+        jLabel1.setText("Hospital");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(382, 382, 382)
+                .addGap(404, 404, 404)
                 .addComponent(jLabel1)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addContainerGap(548, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
