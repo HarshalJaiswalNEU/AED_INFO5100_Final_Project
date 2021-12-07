@@ -5,6 +5,7 @@
 package UserInterface;
 
 import Business.Firebase.FirebaseHelper;
+import UserInterface.Hospital.MainHospitalPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,14 +36,13 @@ public class MainFrameForm extends javax.swing.JFrame {
         return i;
 
     }
-    
 
     public MainFrameForm() throws IOException, ExecutionException, InterruptedException {
         initComponents();
         this.setSize(1200, 750);
         firebaseHelper = new FirebaseHelper();
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
-        
+
     }
 
     /**
@@ -180,6 +180,12 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        MainHospitalPage mhp = new MainHospitalPage();
+        jSplitPane1.setRightComponent(mhp);
+//        this.setContentPane(mhp);
+//        this.invalidate();
+//        this.validate();
+//        return;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
