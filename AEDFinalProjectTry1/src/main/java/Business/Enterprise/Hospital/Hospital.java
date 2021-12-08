@@ -13,8 +13,8 @@ import Business.Enterprise.Enterprise;
  */
 public class Hospital extends Enterprise{
     
-    public Hospital(String enterpriseName, String registeryNumber, Address address) {
-        super(enterpriseName, registeryNumber, address);
+    public Hospital(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+        super(enterpriseName, registeryNumber, address, username, password);
     }
     
 }

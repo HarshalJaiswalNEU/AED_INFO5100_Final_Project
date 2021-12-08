@@ -13,8 +13,10 @@ import Business.Enterprise.Enterprise;
  */
 public class Administration extends Enterprise{
     
-    public Administration(String enterpriseName, String registeryNumber, Address address) {
-        super(enterpriseName, registeryNumber, address);
+    public Administration(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+        super(enterpriseName, registeryNumber, address, username, password);
     }
+    
+ 
     
 }
