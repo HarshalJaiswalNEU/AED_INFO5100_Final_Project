@@ -43,10 +43,14 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     }
 
-    public MainFrameForm() throws IOException, ExecutionException, InterruptedException {
+    public MainFrameForm() {
         initComponents();
         this.setSize(1200, 750);
-        firebaseHelper = new FirebaseHelper();
+        try {
+            firebaseHelper = new FirebaseHelper();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
 
     }
@@ -191,7 +195,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        MainHospitalPage mhp = new MainHospitalPage();
+        MainHospitalPage mhp = new MainHospitalPage(this);
         jSplitPane1.setRightComponent(mhp);
 
 //        this.setContentPane(mhp);
@@ -208,7 +212,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        MainDispensaryPage mdp =new MainDispensaryPage();
+        MainDispensaryPage mdp = new MainDispensaryPage();
         jSplitPane1.setRightComponent(mdp);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -268,7 +272,7 @@ public class MainFrameForm extends javax.swing.JFrame {
             public void run() {
                 try {
                     new MainFrameForm().setVisible(true);
-                } catch (IOException | ExecutionException | InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -287,4 +291,5 @@ public class MainFrameForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
+
 }

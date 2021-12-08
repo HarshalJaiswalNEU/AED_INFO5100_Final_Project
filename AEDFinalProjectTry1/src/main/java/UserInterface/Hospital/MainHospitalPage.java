@@ -4,7 +4,9 @@
  */
 package UserInterface.Hospital;
 
-import javax.swing.JOptionPane;
+import UserInterface.MainFrameForm;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -15,9 +17,12 @@ public class MainHospitalPage extends javax.swing.JPanel {
     /**
      * Creates new form MainHospitalPage
      */
-    public MainHospitalPage() {
-        initComponents();
-    }
+  
+MainFrameForm mainScreen;
+    public MainHospitalPage(MainFrameForm mainScreen) {
+         initComponents();  
+this.mainScreen = mainScreen;
+  }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,11 +231,18 @@ public class MainHospitalPage extends javax.swing.JPanel {
         }
 
         if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-            
-//            this.setContentPane(hadminsign);
-//            this.invalidate();
-//            this.validate();
-            return;
+            //System.out.println("Hospital");
+            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen);
+
+
+//suc.setVisible(true);
+mainScreen.setContentPane(s);
+//             this.add(s);
+
+            mainScreen.invalidate();
+            mainScreen.validate();
+
+
 
         }
 
