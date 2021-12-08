@@ -24,6 +24,7 @@ public class Hospital extends Enterprise {
         this.doctordirectory = new ArrayList();
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
+
     }
 
     public ArrayList<Doctor> getDoctordirectory() {
