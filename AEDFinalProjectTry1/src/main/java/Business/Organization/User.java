@@ -5,6 +5,7 @@
 package Business.Organization;
 
 import Business.Components.Address;
+import java.util.Date;
 
 /**
  *
@@ -14,10 +15,31 @@ public class User {
 
 private String uname;
 private String pswd;
+private String id;
 private String name;
 private Address add;
 private String gender;
 private String telenum;
+private Date dob;
+
+    public User(String uname, String pswd, String id, String name, Address add, String gender, String telenum, Date dob) {
+        this.uname = uname;
+        this.pswd = pswd;
+        this.id = id;
+        this.name = name;
+        this.add = add;
+        this.gender = gender;
+        this.telenum = telenum;
+        this.dob = dob;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
 
     public String getUname() {
         return uname;
@@ -67,6 +89,13 @@ private String telenum;
         this.telenum = telenum;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     
 }
