@@ -4,6 +4,7 @@
  */
 package UserInterface.Hospital;
 
+import Business.Enterprise.Hospital.Hospital;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -309,6 +310,13 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
 
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
         // TODO add your handling code here:
+        String address = txtAdd.getText() + txtCity.getText() + txtState.getText() + txtZip.getText();
+        Hospital hosp = new Hospital(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
+
+        System.out.println("Hospital"+hosp.getUsername());
+        MainFrameForm suc = new MainFrameForm();
+        ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
+        suc.setVisible(true);
 //        if (txtFullName.getText().equals("") || txtUsrName.getText().equals("") || txtPass.getText().equals("") || txtNo.getText().equals("")
 //            || txtAdd.getText().equals("") || txtCity.getText().equals("") || txtState.getText().equals("") || txtZip.getText().equals("")) {
 //
@@ -336,12 +344,11 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         //this.setVisible(false);
-
 //        MainHospitalPage f = new MainHospitalPage(mainScreen);
 //        mainScreen.add(f);
-MainFrameForm suc = new MainFrameForm();
-((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
-suc.setVisible(true);
+        MainFrameForm suc = new MainFrameForm();
+        ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
+        suc.setVisible(true);
 //        MainJFrame cust = new MainJFrame();
 //        ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         //cust.setVisible(true);
