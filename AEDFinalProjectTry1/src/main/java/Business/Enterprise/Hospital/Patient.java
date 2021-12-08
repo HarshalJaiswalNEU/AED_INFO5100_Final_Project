@@ -4,7 +4,9 @@
  */
 package Business.Enterprise.Hospital;
 
+import Business.Components.Address;
 import Business.Organization.User;
+import java.util.Date;
 
 /**
  *
@@ -12,4 +14,19 @@ import Business.Organization.User;
  */
 public class Patient extends User{
     
+    private String diagnosis;
+
+    public Patient(String uname, String pswd, String id, String name, Address add, String gender, String telenum, Date dob,String diagnosis) {
+        super(uname, pswd, id, name, add, gender, telenum, dob);
+        this.diagnosis = diagnosis;
+    }
+
+    public String getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
+    }
+     
 }
