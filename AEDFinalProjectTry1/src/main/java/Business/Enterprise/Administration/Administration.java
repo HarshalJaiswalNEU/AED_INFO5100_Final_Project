@@ -14,7 +14,7 @@ import Business.Enterprise.Enterprise;
 public class Administration extends Enterprise{
     
     public Administration(String enterpriseName, String registeryNumber, Address address) {
-        super(enterpriseName, registeryNumber, address);
+        super(enterpriseName, registeryNumber, address, id, username, password);
     }
     
 }

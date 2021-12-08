@@ -14,7 +14,7 @@ import Business.Enterprise.Enterprise;
 public class DonorBank extends Enterprise{
     
     public DonorBank(String enterpriseName, String registeryNumber, Address address) {
-        super(enterpriseName, registeryNumber, address);
+        super(enterpriseName, registeryNumber, address, id, username, password);
     }
     
 }
