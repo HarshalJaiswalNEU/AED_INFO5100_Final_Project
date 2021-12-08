@@ -5,9 +5,11 @@
 package UserInterface.Hospital;
 
 import Business.Enterprise.Hospital.Hospital;
+import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import java.util.concurrent.ExecutionException;
 
 /**
  *
@@ -19,10 +21,12 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
      * Creates new form SignUpHospitalAdmin
      */
     MainFrameForm mainScreen;
+    FirebaseHelper firebaseHelper;
 
-    public SignUpHospitalAdmin(MainFrameForm mainScreen) {
+    public SignUpHospitalAdmin(MainFrameForm mainScreen, FirebaseHelper firebaseHelper) {
         initComponents();
         this.mainScreen = mainScreen;
+        this.firebaseHelper = firebaseHelper;
     }
 
     /**
@@ -313,6 +317,11 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
         String address = txtAdd.getText() + txtCity.getText() + txtState.getText() + txtZip.getText();
         Hospital hosp = new Hospital(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
 
+        try {
+            firebaseHelper.addHospitalToFirebase(hosp);
+        } catch (Exception e) {
+            System.out.println("Cant upload in firebase");
+        }
         System.out.println("Hospital"+hosp.getUsername());
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();

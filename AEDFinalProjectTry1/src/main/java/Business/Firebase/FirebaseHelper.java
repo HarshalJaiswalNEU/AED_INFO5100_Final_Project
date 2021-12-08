@@ -39,7 +39,12 @@ public class FirebaseHelper {
                 .setDatabaseUrl("https://aedproject-5100-default-rtdb.firebaseio.com")
                 .build();
 
-        FirebaseApp.initializeApp(options);
+        try {
+
+            FirebaseApp.initializeApp(options);
+        } catch (Exception e) {
+            System.out.println("initilize err: " + e.toString());
+        }
 
         this.db = FirestoreClient.getFirestore();
 

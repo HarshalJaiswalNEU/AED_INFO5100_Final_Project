@@ -4,12 +4,11 @@
  */
 package UserInterface.Hospital;
 
+import Business.EcoSystem.EcoSystem;
+import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
- *
  * @author harshaljaiswal
  */
 public class MainHospitalPage extends javax.swing.JPanel {
@@ -17,12 +16,27 @@ public class MainHospitalPage extends javax.swing.JPanel {
     /**
      * Creates new form MainHospitalPage
      */
-  
-MainFrameForm mainScreen;
-    public MainHospitalPage(MainFrameForm mainScreen) {
-         initComponents();  
-this.mainScreen = mainScreen;
-  }
+
+    MainFrameForm mainScreen;
+    FirebaseHelper firebaseHelper;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSignin;
+    private javax.swing.JButton btn_login;
+    private javax.swing.JComboBox<String> cmb_Role;
+    private javax.swing.JLabel lbl_Hosptitle;
+    private javax.swing.JLabel lbl_pswd;
+    private javax.swing.JLabel lbl_role;
+    private javax.swing.JLabel lbl_username;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
+
+    private EcoSystem ecoSystem;
+    public MainHospitalPage(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+        initComponents();
+        this.mainScreen = mainScreen;
+        this.firebaseHelper = firebaseHelper;
+        this.ecoSystem = ecoSystem;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +60,7 @@ this.mainScreen = mainScreen;
         lbl_Hosptitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_Hosptitle.setText("Hospital");
 
-        cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Nurse", "Doctor","Hospital Admin"}));
+        cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Patient", "Nurse", "Doctor", "Hospital Admin"}));
         cmb_Role.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_RoleActionPerformed(evt);
@@ -81,53 +95,53 @@ this.mainScreen = mainScreen;
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(404, 404, 404)
-                .addComponent(lbl_Hosptitle, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(427, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(353, 353, 353)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_role)
-                        .addComponent(lbl_username)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_pswd)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(btn_login)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSignin))
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(354, Short.MAX_VALUE)))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(404, 404, 404)
+                                .addComponent(lbl_Hosptitle, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(427, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(353, 353, 353)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl_role)
+                                                .addComponent(lbl_username)
+                                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl_pswd)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                                .addComponent(btn_login)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(btnSignin))
+                                                        .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addContainerGap(354, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lbl_Hosptitle)
-                .addContainerGap(550, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(192, 192, 192)
-                    .addComponent(lbl_role)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lbl_username)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbl_pswd)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(37, 37, 37)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_login)
-                        .addComponent(btnSignin))
-                    .addContainerGap(193, Short.MAX_VALUE)))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(lbl_Hosptitle)
+                                .addContainerGap(550, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(192, 192, 192)
+                                        .addComponent(lbl_role)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lbl_username)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lbl_pswd)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(btn_login)
+                                                .addComponent(btnSignin))
+                                        .addContainerGap(193, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -205,7 +219,7 @@ this.mainScreen = mainScreen;
         // TODO add your handling code here:
 
         if (cmb_Role.getSelectedItem().toString() == "Doctor") {
-            
+
 //            this.setContentPane(docsign);
 //            this.invalidate();
 //            this.validate();
@@ -213,7 +227,7 @@ this.mainScreen = mainScreen;
 
         }
         if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-            
+
 //            this.setContentPane(nursesign);
 //            this.invalidate();
 //            this.validate();
@@ -222,7 +236,7 @@ this.mainScreen = mainScreen;
         }
 
         if (cmb_Role.getSelectedItem().toString() == "Patient") {
-            
+
 //            this.setContentPane(patsign);
 //            this.invalidate();
 //            this.validate();
@@ -232,32 +246,19 @@ this.mainScreen = mainScreen;
 
         if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
             //System.out.println("Hospital");
-            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen);
+            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, firebaseHelper);
 
 
 //suc.setVisible(true);
-mainScreen.setContentPane(s);
+            mainScreen.setContentPane(s);
 //             this.add(s);
 
             mainScreen.invalidate();
             mainScreen.validate();
 
 
-
         }
 
     }//GEN-LAST:event_btnSigninActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSignin;
-    private javax.swing.JButton btn_login;
-    private javax.swing.JComboBox<String> cmb_Role;
-    private javax.swing.JLabel lbl_Hosptitle;
-    private javax.swing.JLabel lbl_pswd;
-    private javax.swing.JLabel lbl_role;
-    private javax.swing.JLabel lbl_username;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
