@@ -53,7 +53,7 @@ public class MainFrameForm extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("MainFramrForm: firebase init error"+ e.toString());
         }
-        this.ecoSystem = new EcoSystem();
+        this.ecoSystem = firebaseHelper.retriveSystem();
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
 
     }
@@ -233,7 +233,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        MainAdministrationPage map = new MainAdministrationPage();
+        MainAdministrationPage map = new MainAdministrationPage(this, firebaseHelper, ecoSystem);
         jSplitPane1.setRightComponent(map);
     }//GEN-LAST:event_jButton7ActionPerformed
 
