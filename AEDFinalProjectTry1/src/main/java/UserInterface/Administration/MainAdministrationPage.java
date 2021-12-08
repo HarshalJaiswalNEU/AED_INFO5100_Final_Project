@@ -4,6 +4,12 @@
  */
 package UserInterface.Administration;
 
+import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Hospital;
+import Business.Firebase.FirebaseHelper;
+import UserInterface.MainFrameForm;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author harshaljaiswal
@@ -13,8 +19,17 @@ public class MainAdministrationPage extends javax.swing.JPanel {
     /**
      * Creates new form MainAdministrationPage
      */
-    public MainAdministrationPage() {
+    MainFrameForm mainScreen;
+    FirebaseHelper firebaseHelper;
+    private EcoSystem ecoSystem;
+    
+    public MainAdministrationPage(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
         initComponents();
+        this.mainScreen = mainScreen;
+        this.firebaseHelper = firebaseHelper;
+        this.ecoSystem = ecoSystem;
+        
+        populateTable();
     }
 
     /**
@@ -27,30 +42,72 @@ public class MainAdministrationPage extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb1 = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Administration");
+
+        tb1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "hospital name", "user id", "pass", "reg", "add"
+            }
+        ));
+        jScrollPane1.setViewportView(tb1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(382, 382, 382)
-                .addComponent(jLabel1)
-                .addContainerGap(398, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(382, 382, 382)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addGap(99, 99, 99)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+
+        for (Hospital h : ecoSystem.getHospitaldirectory().getHospitalList()) {
+
+            Object[] row = new Object[5];
+            row[0] = h.getEnterpriseName();
+            row[1] = h.getUsername();
+            row[2] = h.getPassword();
+            row[3] = h.getRegisteryNumber();
+            row[4] = h.getAddress();
+
+            model.addRow(row);
+        }
+
+      
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tb1;
     // End of variables declaration//GEN-END:variables
 }

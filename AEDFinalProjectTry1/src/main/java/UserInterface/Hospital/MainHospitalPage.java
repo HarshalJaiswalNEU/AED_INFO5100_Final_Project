@@ -246,7 +246,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
             //System.out.println("Hospital");
-            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, firebaseHelper);
+            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, firebaseHelper, ecoSystem);
 
 
 //suc.setVisible(true);

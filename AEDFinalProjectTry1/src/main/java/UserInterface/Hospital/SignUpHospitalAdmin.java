@@ -4,6 +4,7 @@
  */
 package UserInterface.Hospital;
 
+import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
@@ -22,11 +23,12 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
      */
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
-
-    public SignUpHospitalAdmin(MainFrameForm mainScreen, FirebaseHelper firebaseHelper) {
+    private EcoSystem ecoSystem;
+    public SignUpHospitalAdmin(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
         this.firebaseHelper = firebaseHelper;
+        this.ecoSystem = ecoSystem;
     }
 
     /**
@@ -316,13 +318,16 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
         String address = txtAdd.getText() + txtCity.getText() + txtState.getText() + txtZip.getText();
         Hospital hosp = new Hospital(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
+        System.out.println("Hospital"+hosp.getUsername());
 
         try {
             firebaseHelper.addHospitalToFirebase(hosp);
         } catch (Exception e) {
-            System.out.println("Cant upload in firebase");
+            System.out.println("Cant upload hospital in firebase");
         }
-        System.out.println("Hospital"+hosp.getUsername());
+
+        ecoSystem.addHospital(hosp);
+
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);

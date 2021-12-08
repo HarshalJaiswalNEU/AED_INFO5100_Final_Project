@@ -4,6 +4,7 @@
  */
 package Business.Firebase;
 
+import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import com.google.api.core.ApiFuture;
@@ -15,6 +16,7 @@ import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,4 +112,42 @@ public class FirebaseHelper {
         return res;
     }
 
+    public ArrayList<Hospital> getHospitalList() throws ExecutionException, InterruptedException {
+        ArrayList<Hospital> hospitalArrayList= new ArrayList();
+        ApiFuture<QuerySnapshot> query = db.collection("hospital").get();
+
+        QuerySnapshot querySnapshot = query.get();
+        List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+        for (QueryDocumentSnapshot document : documents) {
+            System.out.println("getHospitalList(): "+ document.getData().toString());
+            //enterpriseName, registeryNumber, address, username, password
+            Map<String, Object> hospitalDocument = document.getData();
+            Hospital hosp = new Hospital(hospitalDocument.get("enterpriseName").toString(),
+                    hospitalDocument.get("registeryNumber").toString(), hospitalDocument.get("address").toString(),
+                    hospitalDocument.get("username").toString(),hospitalDocument.get("password").toString());
+
+            hospitalArrayList.add(hosp);
+
+        }
+      return hospitalArrayList;
+    }
+
+    public EcoSystem retriveSystem() {
+        EcoSystem ecoSystem = new EcoSystem();
+
+        //Get Hospitals
+        ArrayList<Hospital> hospitalArrayList =null;
+        try {
+            hospitalArrayList = getHospitalList();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        for(Hospital h : hospitalArrayList){
+            ecoSystem.addHospital(h);
+        }
+
+
+        return ecoSystem;
+    }
 }
