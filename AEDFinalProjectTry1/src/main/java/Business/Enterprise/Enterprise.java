@@ -12,11 +12,11 @@ import Business.Components.Address;
 public class Enterprise {
     private String enterpriseName;
     private String registeryNumber;
-    private Address address;
+    private String address;
     private String username;
     private String password;
 
-    public Enterprise(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+    public Enterprise(String enterpriseName, String registeryNumber, String address, String username, String password) {
         this.enterpriseName = enterpriseName;
         this.registeryNumber = registeryNumber;
         this.address = address;
@@ -40,11 +40,11 @@ public class Enterprise {
         this.registeryNumber = registeryNumber;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
