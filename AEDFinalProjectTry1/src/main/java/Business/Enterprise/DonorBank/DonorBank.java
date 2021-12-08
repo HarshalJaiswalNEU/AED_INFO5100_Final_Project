@@ -13,7 +13,7 @@ import Business.Enterprise.Enterprise;
  */
 public class DonorBank extends Enterprise{
     
-    public DonorBank(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+    public DonorBank(String enterpriseName, String registeryNumber, String address, String username, String password) {
         super(enterpriseName, registeryNumber, address, username, password);
     }
     

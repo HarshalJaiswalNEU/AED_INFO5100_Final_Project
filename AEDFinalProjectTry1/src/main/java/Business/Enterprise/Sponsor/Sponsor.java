@@ -13,7 +13,7 @@ import Business.Enterprise.Enterprise;
  */
 public class Sponsor extends Enterprise{
     
-    public Sponsor(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+    public Sponsor(String enterpriseName, String registeryNumber, String address, String username, String password) {
         super(enterpriseName, registeryNumber, address, username, password);
     }
     
