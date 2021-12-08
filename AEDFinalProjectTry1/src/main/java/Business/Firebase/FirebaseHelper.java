@@ -4,6 +4,7 @@
  */
 package Business.Firebase;
 
+import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -44,18 +45,42 @@ public class FirebaseHelper {
 
     }
 
-    public void addHospital(Hospital hospital) throws ExecutionException, InterruptedException {
-        DocumentReference docRef = db.collection("hospital").document("alovelace");
+    public void addHospitalToFirebase(Hospital hospital) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("hospital").document(hospital.getRegisteryNumber());
         // Add document data  with  using a hashmap
+        //enterpriseName, registeryNumber, address, username, password
         Map<String, Object> data = new HashMap<>();
-        data.put("first", "Ada");
-        data.put("last", "Lovelace");
-        data.put("born", 1815);
+        data.put("enterpriseName", hospital.getEnterpriseName());
+        data.put("registeryNumber", hospital.getRegisteryNumber());
+        data.put("address", hospital.getAddress());
+        data.put("username", hospital.getUsername());
+        data.put("password", hospital.getPassword());
         //asynchronously write data
         ApiFuture<WriteResult> result = docRef.set(data);
 
         // result.get() blocks on response
-        System.out.println("Update time : " + result.get().getUpdateTime());
+        System.out.println("Update time(hospital) : " + result.get().getUpdateTime());
+    }
+
+    public void addDoctorToFirebase(Doctor doctor) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("doctor").document(doctor.getId());
+        // Add document data  with  using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        //uname, pswd, id, name, add, gender, telenum, dob
+        data.put("uname", doctor.getUname());
+        data.put("pswd", doctor.getPswd());
+        data.put("id", doctor.getId());
+        data.put("name", doctor.getName());
+        data.put("add", doctor.getAdd());
+        data.put("gender", doctor.getGender());
+        data.put("telenum", doctor.getTelenum());
+        data.put("dob", doctor.getDob());
+        data.put("speciality", doctor.getSpeciality());
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
+
+        // result.get() blocks on response
+        System.out.println("Update time(doctor) : " + result.get().getUpdateTime());
     }
 
     public String getFirebaseData() throws ExecutionException, InterruptedException {
