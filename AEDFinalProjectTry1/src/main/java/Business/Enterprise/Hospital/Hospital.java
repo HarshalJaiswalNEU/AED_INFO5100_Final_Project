@@ -18,12 +18,13 @@ public class Hospital extends Enterprise {
     private ArrayList<Nurse> nursedirectory;
     private ArrayList<Patient> patientdirectory;
 
-    public Hospital(String enterpriseName, String registeryNumber, Address address, String username, String password) {
+    public Hospital(String enterpriseName, String registeryNumber, String address, String username, String password) {
         super(enterpriseName, registeryNumber, address, username, password);
 
         this.doctordirectory = new ArrayList();
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
+
     }
 
     public ArrayList<Doctor> getDoctordirectory() {
