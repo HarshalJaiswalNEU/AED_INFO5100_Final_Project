@@ -13,10 +13,13 @@ import com.google.cloud.firestore.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import java.util.Date;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,14 +89,18 @@ public class FirebaseHelper {
         //asynchronously write data
         ApiFuture<WriteResult> result = docRef.set(data);
 
-        // result.get() blocks on response
         System.out.println("Update time(doctor) : " + result.get().getUpdateTime());
-        
-//         DocumentReference docRefHosp = db.collection("hospital").document(hospital.getEnterpriseName());
-        // Add document data  with  using a hashmap
-        //enterpriseName, registeryNumber, address, username, password
+
+        DocumentReference docRefHosp = db.collection("hospital").document(hosp);
+
         Map<String, Object> dataHosp = new HashMap<>();
+        dataHosp.put("doctorsDirectory", FieldValue.arrayUnion(doctor));
+
+        db.collection("hospital").document(hosp).update( dataHosp);
+
+
     }
+
 
     public String getFirebaseData() throws ExecutionException, InterruptedException {
         String res = "";
@@ -118,37 +125,57 @@ public class FirebaseHelper {
     }
 
     public ArrayList<Hospital> getHospitalList() throws ExecutionException, InterruptedException {
-        ArrayList<Hospital> hospitalArrayList= new ArrayList();
+        ArrayList<Hospital> hospitalArrayList = new ArrayList();
         ApiFuture<QuerySnapshot> query = db.collection("hospital").get();
 
         QuerySnapshot querySnapshot = query.get();
         List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
         for (QueryDocumentSnapshot document : documents) {
-            System.out.println("getHospitalList(): "+ document.getData().toString());
+            System.out.println("getHospitalList(): " + document.getData().toString());
             //enterpriseName, registeryNumber, address, username, password
             Map<String, Object> hospitalDocument = document.getData();
             Hospital hosp = new Hospital(hospitalDocument.get("enterpriseName").toString(),
                     hospitalDocument.get("registeryNumber").toString(), hospitalDocument.get("address").toString(),
-                    hospitalDocument.get("username").toString(),hospitalDocument.get("password").toString());
+                    hospitalDocument.get("username").toString(), hospitalDocument.get("password").toString());
+
+            for(Object d: (List<Object>) document.get("doctorsDirectory")){
+                Map<String , Object> mp= (Map<String, Object>) d;
+                System.out.println( "getHospitalList() "+ mp.get("uname"));
+//                uname, pswd, id, name, add, gender, telenum, dob
+                Doctor doc = new Doctor(
+
+                        mp.get("uname").toString() ,
+                        mp.get("pswd").toString() ,
+                        mp.get("id").toString() ,
+                        mp.get("name").toString() ,
+                        mp.get("add").toString() ,
+                        mp.get("gender").toString() ,
+                        mp.get("telenum").toString(),
+                        new Date(),
+                        mp.get("speciality").toString()
+                );
+                hosp.addDoctor(doc);
+                System.out.println( "ids "+ ((Map<?, ?>) d).get("id") );
+            }
 
             hospitalArrayList.add(hosp);
 
         }
-      return hospitalArrayList;
+        return hospitalArrayList;
     }
 
     public EcoSystem retriveSystem() {
         EcoSystem ecoSystem = new EcoSystem();
 
         //Get Hospitals
-        ArrayList<Hospital> hospitalArrayList =null;
+        ArrayList<Hospital> hospitalArrayList = null;
         try {
             hospitalArrayList = getHospitalList();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
 
-        for(Hospital h : hospitalArrayList){
+        for (Hospital h : hospitalArrayList) {
             ecoSystem.addHospital(h);
         }
 
