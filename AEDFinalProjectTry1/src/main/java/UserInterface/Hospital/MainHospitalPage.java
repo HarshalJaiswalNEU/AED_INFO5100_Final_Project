@@ -51,6 +51,8 @@ public class MainHospitalPage extends javax.swing.JPanel {
         lbl_Hosptitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_Hosptitle.setText("Hospital");
 
+        cmb_Role.setEditable(true);
+        cmb_Role.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Patient", "Nurse", "Doctor","Hospital Admin"}));
         cmb_Role.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,10 +255,14 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Patient") {
 
-            //            this.setContentPane(patsign);
-            //            this.invalidate();
-            //            this.validate();
-            return;
+            SignUpPatient signpat = new SignUpPatient(mainScreen, firebaseHelper, ecoSystem);
+
+            //suc.setVisible(true);
+            mainScreen.setContentPane(signpat);
+            //             this.add(s);
+
+            mainScreen.invalidate();
+            mainScreen.validate();
 
         }
 
