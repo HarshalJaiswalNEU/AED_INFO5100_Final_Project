@@ -7,6 +7,7 @@ package UserInterface.Administration;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
 import java.util.ArrayList;
@@ -114,8 +115,8 @@ public class MainAdministrationPage extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(134, 134, 134))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,7 +133,8 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         System.out.println(" hospitalDoctorSeach: "+hospitalName);
         Hospital h = ecoSystem.getHospitaldirectory().findHospital(hospitalName);
         System.out.println(" "+h.getDoctordirectory().get(0).getName());
-        populateDoctorTable(h.getDoctordirectory());
+//        populateDoctorTable(h.getDoctordirectory());
+        populatePatientTable(h.getPatientdirectory());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void populateTable() {
@@ -159,6 +161,22 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (Doctor d : doctors) {
+
+            Object[] row = new Object[5];
+            row[0] = d.getName();
+            row[1] = d.getUname();
+
+            model.addRow(row);
+        }
+
+      
+    }
+    
+    private void populatePatientTable(ArrayList<Patient> patient) {
+        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
+        model.setRowCount(0);
+
+        for (Patient d : patient) {
 
             Object[] row = new Object[5];
             row[0] = d.getName();

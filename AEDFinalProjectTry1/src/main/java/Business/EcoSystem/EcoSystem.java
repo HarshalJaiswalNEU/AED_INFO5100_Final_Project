@@ -7,6 +7,7 @@ package Business.EcoSystem;
 import Business.Directories.EnterpriseDirectories.HospitalDirectory;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 
 /**
  *
@@ -14,7 +15,8 @@ import Business.Enterprise.Hospital.Hospital;
  */
 public class EcoSystem {
     private HospitalDirectory hospitaldirectory ;
-    
+
+
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
     }
@@ -38,6 +40,17 @@ public class EcoSystem {
             if(hosp.getEnterpriseName() == hospitalName){
                 hosp.addDoctor(doctor);
                 System.out.println("addDoctor() "+ hosp.getDoctordirectory().get(0).getName());
+                return;
+            }
+            
+        }
+    }
+
+    public void addPatient(Patient patient, String hospitalName) {
+        for(Hospital hosp :hospitaldirectory.getHospitalList()){
+            if(hosp.getEnterpriseName() == hospitalName){
+                hosp.addPatient(patient);
+                System.out.println("addPatient() "+ hosp.getPatientdirectory().get(0).getName());
                 return;
             }
             
