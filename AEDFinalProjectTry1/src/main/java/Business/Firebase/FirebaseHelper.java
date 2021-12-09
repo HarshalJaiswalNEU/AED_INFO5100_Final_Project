@@ -204,6 +204,28 @@ public class FirebaseHelper {
         return ecoSystem;
     }
 
+    public EcoSystem getEcoSystem() throws ExecutionException, InterruptedException {
+
+//        EcoSystem ecs =new EcoSystem();
+        ApiFuture<QuerySnapshot> query = db.collection("ecosystem").get();
+
+        QuerySnapshot querySnapshot = query.get();
+        List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+//        Map<String, Object> doc = documents.get(0).getData();
+//        Map<String, Object> d = (Map<String, Object>) doc.get("eco");
+//
+//        ecs.addHospital((Hospital) d.get("hospitalDirectory"));
+        System.out.println("getEcoSystem(): ");
+        EcoSystem ecs = documents.get(0).toObject(EcoSystem.class);
+        System.out.println("getEcoSystem(): "+ecs.toString());
+//        for(String key: d.keySet()){
+//
+//            ecs
+//        }
+
+        return null;
+    }
+
     public void addPatientToFirebase(Patient patient, String hosp) throws ExecutionException, InterruptedException {
         DocumentReference docRef = db.collection("patients").document(patient.getUname());
         // Add document data  with  using a hashmap
@@ -231,4 +253,19 @@ public class FirebaseHelper {
         db.collection("hospital").document(hosp).update( dataHosp);
 
     }
+
+    public void addEcoSystem(EcoSystem eco) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("ecosystem").document("eco");
+        System.out.println("add eco");
+        Map<String, Object> data = new HashMap<>();
+
+        data.put("eco", eco);
+
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(eco);
+//        docRef.create(eco);
+
+        System.out.println("Update time(patient) : " + result.get().getUpdateTime());
+    }
+
 }
