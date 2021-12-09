@@ -243,11 +243,13 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         }
         if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-
+        SignUpNurse a = new SignUpNurse(mainScreen, firebaseHelper, ecoSystem);
             //            this.setContentPane(nursesign);
             //            this.invalidate();
             //            this.validate();
-            return;
+            mainScreen.setContentPane(a);
+            mainScreen.invalidate();
+            mainScreen.validate();
 
         }
 
