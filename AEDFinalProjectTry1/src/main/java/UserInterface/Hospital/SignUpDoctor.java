@@ -212,6 +212,9 @@ public class SignUpDoctor extends javax.swing.JPanel {
                         .addComponent(txtZip))
                     .addContainerGap(294, Short.MAX_VALUE)))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_back, btn_signup});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -257,6 +260,9 @@ public class SignUpDoctor extends javax.swing.JPanel {
                         .addComponent(btn_signup))
                     .addContainerGap(25, Short.MAX_VALUE)))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_back, btn_signup});
+
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
