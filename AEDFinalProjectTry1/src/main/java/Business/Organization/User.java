@@ -17,12 +17,12 @@ private String uname;
 private String pswd;
 private String id;
 private String name;
-private Address add;
+private String add;
 private String gender;
 private String telenum;
 private Date dob;
 
-    public User(String uname, String pswd, String id, String name, Address add, String gender, String telenum, Date dob) {
+    public User(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob) {
         this.uname = uname;
         this.pswd = pswd;
         this.id = id;
@@ -65,11 +65,11 @@ private Date dob;
         this.name = name;
     }
 
-    public Address getAdd() {
+    public String getAdd() {
         return add;
     }
 
-    public void setAdd(Address add) {
+    public void setAdd(String add) {
         this.add = add;
     }
 
