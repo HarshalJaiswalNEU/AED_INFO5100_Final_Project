@@ -20,6 +20,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
+
     public MainHospitalPage(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
@@ -170,65 +171,70 @@ public class MainHospitalPage extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
-            //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
-            //            if (c == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                CustomerMainPage custmp = new CustomerMainPage(system, dB4OUtil, c);
-                //                this.setContentPane(custmp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
+        //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
+        //            if (c == null) {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            } else {
+        //                CustomerMainPage custmp = new CustomerMainPage(system, dB4OUtil, c);
+        //                this.setContentPane(custmp);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            }
+        //
+        //        }
         //        if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-            //            Restaurant r = system.loginResaturant(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                RestaurantMainPage restmp = new RestaurantMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(restmp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
+        //            Restaurant r = system.loginResaturant(txtUsername.getText(), txtPassword.getText());
+        //
+        //            if (r == null) {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            } else {
+        //                RestaurantMainPage restmp = new RestaurantMainPage(system, dB4OUtil, r);
+        //                this.setContentPane(restmp);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            }
+        //
+        //        }
         //
         //        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-            //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(delimp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
+        //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
+        //
+        //            if (r == null) {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            } else {
+        //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
+        //                this.setContentPane(delimp);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            }
+        //
+        //        }
         //
         //        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-            //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-                //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-                //                this.setContentPane(adminpg);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            } else {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            }
-            //        }
+        //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
+        //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
+        //                this.setContentPane(adminpg);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            } else {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            }
+        //        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
 
         if (cmb_Role.getSelectedItem().toString() == "Doctor") {
+
+            SignUpDoctor doc = new SignUpDoctor(mainScreen, firebaseHelper, ecoSystem);
+            mainScreen.setContentPane(doc);
+            mainScreen.invalidate();
+            mainScreen.validate();
 
             //            this.setContentPane(docsign);
             //            this.invalidate();
