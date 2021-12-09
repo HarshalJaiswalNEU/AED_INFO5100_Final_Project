@@ -7,6 +7,7 @@ package Business.Firebase;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.*;
@@ -138,9 +139,9 @@ public class FirebaseHelper {
                     hospitalDocument.get("registeryNumber").toString(), hospitalDocument.get("address").toString(),
                     hospitalDocument.get("username").toString(), hospitalDocument.get("password").toString());
 
+            //for adding doctors list from firebase to ecosystem
             for(Object d: (List<Object>) document.get("doctorsDirectory")){
                 Map<String , Object> mp= (Map<String, Object>) d;
-                System.out.println( "getHospitalList() "+ mp.get("uname"));
 //                uname, pswd, id, name, add, gender, telenum, dob
                 Doctor doc = new Doctor(
 
@@ -155,9 +156,29 @@ public class FirebaseHelper {
                         mp.get("speciality").toString()
                 );
                 hosp.addDoctor(doc);
-                System.out.println( "ids "+ ((Map<?, ?>) d).get("id") );
+//                System.out.println( "ids "+ ((Map<?, ?>) d).get("id") );
             }
 
+            //for adding patients list from firebase to ecosystem
+            for(Object d: (List<Object>) document.get("patientDirectory")){
+                Map<String , Object> mp= (Map<String, Object>) d;
+
+//                uname, pswd, id, name, add, gender, telenum, dob
+                Patient pat = new Patient(
+
+                        mp.get("uname").toString() ,
+                        mp.get("pswd").toString() ,
+                        mp.get("id").toString() ,
+                        mp.get("name").toString() ,
+                        mp.get("add").toString() ,
+                        mp.get("gender").toString() ,
+                        mp.get("telenum").toString(),
+                        new Date(),
+                        mp.get("diagnosis").toString()
+                );
+                hosp.addPatient(pat);
+//                System.out.println( "ids "+ ((Map<?, ?>) d).get("id") );
+            }
             hospitalArrayList.add(hosp);
 
         }
@@ -181,5 +202,33 @@ public class FirebaseHelper {
 
 
         return ecoSystem;
+    }
+
+    public void addPatientToFirebase(Patient patient, String hosp) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("patients").document(patient.getUname());
+        // Add document data  with  using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        //uname, pswd, id, name, add, gender, telenum, dob
+        data.put("uname", patient.getUname());
+        data.put("pswd", patient.getPswd());
+        data.put("id", patient.getId());
+        data.put("name", patient.getName());
+        data.put("add", patient.getAdd());
+        data.put("gender", patient.getGender());
+        data.put("telenum", patient.getTelenum());
+        data.put("dob", patient.getDob());
+        data.put("diagnosis", patient.getDiagnosis());
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
+
+        System.out.println("Update time(patient) : " + result.get().getUpdateTime());
+
+        DocumentReference docRefHosp = db.collection("hospital").document(hosp);
+
+        Map<String, Object> dataHosp = new HashMap<>();
+        dataHosp.put("patientDirectory", FieldValue.arrayUnion(patient));
+
+        db.collection("hospital").document(hosp).update( dataHosp);
+
     }
 }

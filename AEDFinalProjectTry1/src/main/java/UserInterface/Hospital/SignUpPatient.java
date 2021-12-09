@@ -480,13 +480,13 @@ public class SignUpPatient extends javax.swing.JPanel {
         //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
         Patient patient = new Patient(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address, cmb_gender.getSelectedItem().toString(), txt_telenum.getText(),new Date() , txt_diag.getText());
         System.out.println("Patient added");
-//        try {
-//            firebaseHelper.addDoctorToFirebase(patient, hospitalList.getSelectedItem().toString());
-//        } catch (Exception e) {
-//            System.out.println("Cant upload hospital in firebase");
-//        }
-//
-//        ecoSystem.addDoctor(patient, hospitalList.getSelectedItem().toString());
+        try {
+            firebaseHelper.addPatientToFirebase(patient, hospitalList.getSelectedItem().toString());
+        } catch (Exception e) {
+            System.out.println("Cant upload hospital in firebase");
+        }
+
+        ecoSystem.addPatient(patient, hospitalList.getSelectedItem().toString());
 
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
