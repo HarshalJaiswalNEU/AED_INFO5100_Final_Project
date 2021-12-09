@@ -249,7 +249,14 @@ public class MainHospitalPage extends javax.swing.JPanel {
             //            this.setContentPane(nursesign);
             //            this.invalidate();
             //            this.validate();
-            return;
+            SignUpNurse n = new SignUpNurse(mainScreen, firebaseHelper, ecoSystem);
+
+            //suc.setVisible(true);
+            mainScreen.setContentPane(n);
+            //             this.add(s);
+
+            mainScreen.invalidate();
+            mainScreen.validate();
 
         }
 
