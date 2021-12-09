@@ -4,35 +4,35 @@
  */
 package Business.Firebase;
 
-
+import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Doctor;
+import Business.Enterprise.Hospital.Hospital;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 /**
- *
  * @author harshaljaiswal
  */
 public class FirebaseHelper {
+
+    Firestore db;
 
     public FirebaseHelper() throws IOException {
         firebaseInit();
     }
 
-    Firestore db;
     public void firebaseInit() throws IOException {
         FileInputStream serviceAccount = new FileInputStream("./serviceAccount.json");
 
@@ -41,16 +41,58 @@ public class FirebaseHelper {
                 .setDatabaseUrl("https://aedproject-5100-default-rtdb.firebaseio.com")
                 .build();
 
-        FirebaseApp.initializeApp(options);
+        try {
+
+            FirebaseApp.initializeApp(options);
+        } catch (Exception e) {
+            System.out.println("initilize err: " + e.toString());
+        }
 
         this.db = FirestoreClient.getFirestore();
 
     }
 
-    public String getFirebaseData() throws ExecutionException, InterruptedException {
-        String res ="";
-        ApiFuture<QuerySnapshot> query = db.collection("users").get();
+    public void addHospitalToFirebase(Hospital hospital) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("hospital").document(hospital.getRegisteryNumber());
+        // Add document data  with  using a hashmap
+        //enterpriseName, registeryNumber, address, username, password
+        Map<String, Object> data = new HashMap<>();
+        data.put("enterpriseName", hospital.getEnterpriseName());
+        data.put("registeryNumber", hospital.getRegisteryNumber());
+        data.put("address", hospital.getAddress());
+        data.put("username", hospital.getUsername());
+        data.put("password", hospital.getPassword());
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
 
+        // result.get() blocks on response
+        System.out.println("Update time(hospital) : " + result.get().getUpdateTime());
+    }
+
+    public void addDoctorToFirebase(Doctor doctor) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("doctor").document(doctor.getId());
+        // Add document data  with  using a hashmap
+        Map<String, Object> data = new HashMap<>();
+        //uname, pswd, id, name, add, gender, telenum, dob
+        data.put("uname", doctor.getUname());
+        data.put("pswd", doctor.getPswd());
+        data.put("id", doctor.getId());
+        data.put("name", doctor.getName());
+        data.put("add", doctor.getAdd());
+        data.put("gender", doctor.getGender());
+        data.put("telenum", doctor.getTelenum());
+        data.put("dob", doctor.getDob());
+        data.put("speciality", doctor.getSpeciality());
+        //asynchronously write data
+        ApiFuture<WriteResult> result = docRef.set(data);
+
+        // result.get() blocks on response
+        System.out.println("Update time(doctor) : " + result.get().getUpdateTime());
+    }
+
+    public String getFirebaseData() throws ExecutionException, InterruptedException {
+        String res = "";
+        ApiFuture<QuerySnapshot> query = db.collection("users").get();
 
         QuerySnapshot querySnapshot = query.get();
         List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
@@ -63,12 +105,49 @@ public class FirebaseHelper {
             System.out.println("Last: " + document.getString("last"));
             System.out.println("Born: " + document.getLong("born"));
 
-            res += (document.getId() +"  "+document.getString("first")+"  "+document.getString("middle")+" | " );
+            res += (document.getId() + "  " + document.getString("first") + "  " + document.getString("middle") + " | ");
 
         }
 
         return res;
     }
 
+    public ArrayList<Hospital> getHospitalList() throws ExecutionException, InterruptedException {
+        ArrayList<Hospital> hospitalArrayList= new ArrayList();
+        ApiFuture<QuerySnapshot> query = db.collection("hospital").get();
 
+        QuerySnapshot querySnapshot = query.get();
+        List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+        for (QueryDocumentSnapshot document : documents) {
+            System.out.println("getHospitalList(): "+ document.getData().toString());
+            //enterpriseName, registeryNumber, address, username, password
+            Map<String, Object> hospitalDocument = document.getData();
+            Hospital hosp = new Hospital(hospitalDocument.get("enterpriseName").toString(),
+                    hospitalDocument.get("registeryNumber").toString(), hospitalDocument.get("address").toString(),
+                    hospitalDocument.get("username").toString(),hospitalDocument.get("password").toString());
+
+            hospitalArrayList.add(hosp);
+
+        }
+      return hospitalArrayList;
+    }
+
+    public EcoSystem retriveSystem() {
+        EcoSystem ecoSystem = new EcoSystem();
+
+        //Get Hospitals
+        ArrayList<Hospital> hospitalArrayList =null;
+        try {
+            hospitalArrayList = getHospitalList();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        for(Hospital h : hospitalArrayList){
+            ecoSystem.addHospital(h);
+        }
+
+
+        return ecoSystem;
+    }
 }
