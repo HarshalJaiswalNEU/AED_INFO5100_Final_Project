@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author harshaljaiswal
  */
 public class HospitalDirectory {
+
     private ArrayList<Hospital> hospitalList;
 
     public ArrayList<Hospital> getHospitalList() {
@@ -21,23 +22,33 @@ public class HospitalDirectory {
     public void setHospitalList(ArrayList<Hospital> hospitalList) {
         this.hospitalList = hospitalList;
     }
-    
-    public HospitalDirectory(){
+
+    public HospitalDirectory() {
         hospitalList = new ArrayList();
     }
-    
-    public void addHospital(Hospital hospital){
+
+    public void addHospital(Hospital hospital) {
         hospitalList.add(hospital);
     }
-    
-    public void removeHospital(String id){
-        
-        for(Hospital hosp : hospitalList){
-            if(hosp.getRegisteryNumber() == id)
-            hospitalList.remove(hosp);
+
+    public void removeHospital(String id) {
+
+        for (Hospital hosp : hospitalList) {
+            if (hosp.getRegisteryNumber() == id) {
+                hospitalList.remove(hosp);
+            }
         }
-        
+
     }
-    
-    
+
+    public Hospital findHospital(String hospitalName) {
+        System.out.println("findHospital() "+hospitalName);
+        for (Hospital hosp : hospitalList) {
+            if (hosp.getEnterpriseName() == hospitalName) {
+                return hosp;
+            }
+        }
+        return null;
+    }
+
 }

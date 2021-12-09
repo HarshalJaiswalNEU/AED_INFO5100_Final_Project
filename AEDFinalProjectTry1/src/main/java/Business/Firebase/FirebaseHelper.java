@@ -53,7 +53,7 @@ public class FirebaseHelper {
     }
 
     public void addHospitalToFirebase(Hospital hospital) throws ExecutionException, InterruptedException {
-        DocumentReference docRef = db.collection("hospital").document(hospital.getRegisteryNumber());
+        DocumentReference docRef = db.collection("hospital").document(hospital.getEnterpriseName());
         // Add document data  with  using a hashmap
         //enterpriseName, registeryNumber, address, username, password
         Map<String, Object> data = new HashMap<>();
@@ -69,8 +69,8 @@ public class FirebaseHelper {
         System.out.println("Update time(hospital) : " + result.get().getUpdateTime());
     }
 
-    public void addDoctorToFirebase(Doctor doctor) throws ExecutionException, InterruptedException {
-        DocumentReference docRef = db.collection("doctor").document(doctor.getId());
+    public void addDoctorToFirebase(Doctor doctor, String hosp) throws ExecutionException, InterruptedException {
+        DocumentReference docRef = db.collection("doctors").document(doctor.getUname());
         // Add document data  with  using a hashmap
         Map<String, Object> data = new HashMap<>();
         //uname, pswd, id, name, add, gender, telenum, dob
@@ -88,6 +88,11 @@ public class FirebaseHelper {
 
         // result.get() blocks on response
         System.out.println("Update time(doctor) : " + result.get().getUpdateTime());
+        
+//         DocumentReference docRefHosp = db.collection("hospital").document(hospital.getEnterpriseName());
+        // Add document data  with  using a hashmap
+        //enterpriseName, registeryNumber, address, username, password
+        Map<String, Object> dataHosp = new HashMap<>();
     }
 
     public String getFirebaseData() throws ExecutionException, InterruptedException {
