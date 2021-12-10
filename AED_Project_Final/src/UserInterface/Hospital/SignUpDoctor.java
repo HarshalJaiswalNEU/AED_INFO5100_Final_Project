@@ -33,6 +33,9 @@ public class SignUpDoctor extends javax.swing.JPanel {
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
+        for(Hospital h: ecoSystem.getHospitaldirectory().getHospitalList()){
+            hospitalList.addItem(h.getEnterpriseName());
+        }
     }
     
    
@@ -373,15 +376,12 @@ public class SignUpDoctor extends javax.swing.JPanel {
         //uname, pswd, id, name, add, gender, telenum, dob
         //(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
 
-        Doctor doctor = new Doctor(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address, "male", "telenum", new Date(), "speciality");
+        Doctor doctor = new Doctor(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address, "male", "telenum", new Date(), "speciality",hospitalList.getSelectedItem().toString());
         
-        try {
-            firebaseHelper.addDoctorToFirebase(doctor, hospitalList.getSelectedItem().toString());
-        } catch (Exception e) {
-            System.out.println("Cant upload hospital in firebase");
-        }
+       
 
-        ecoSystem.addDoctor(doctor, hospitalList.getSelectedItem().toString());
+        ecoSystem.addDoctor(doctor);
+        dB4OUtil.storeSystem(ecoSystem);
         
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();

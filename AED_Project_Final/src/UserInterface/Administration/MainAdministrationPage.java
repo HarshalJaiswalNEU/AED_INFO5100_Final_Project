@@ -133,9 +133,9 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         String hospitalName = model.getValueAt(selectedRow, 0).toString();
         System.out.println(" hospitalDoctorSeach: "+hospitalName);
         Hospital h = ecoSystem.getHospitaldirectory().findHospital(hospitalName);
-        System.out.println(" "+h.getDoctordirectory().get(0).getName());
-//        populateDoctorTable(h.getDoctordirectory());
-        populatePatientTable(h.getPatientdirectory());
+//        System.out.println(" "+h.getDoctordirectory().get(0).getName());
+        populateDoctorTable(ecoSystem.getDoctordirectory(), hospitalName);
+//        populatePatientTable(h.getPatientdirectory());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void populateTable() {
@@ -157,15 +157,18 @@ public class MainAdministrationPage extends javax.swing.JPanel {
       
     }
     
-    private void populateDoctorTable(ArrayList<Doctor> doctors) {
+    private void populateDoctorTable(ArrayList<Doctor> doctors, String hosp) {
         DefaultTableModel model = (DefaultTableModel) tb2.getModel();
         model.setRowCount(0);
 
         for (Doctor d : doctors) {
-
+            System.out.println(d.getHospname() + " "+ hosp);
             Object[] row = new Object[5];
+            if(d.getHospname().equals(hosp) ){
+            
             row[0] = d.getName();
             row[1] = d.getUname();
+            }
 
             model.addRow(row);
         }

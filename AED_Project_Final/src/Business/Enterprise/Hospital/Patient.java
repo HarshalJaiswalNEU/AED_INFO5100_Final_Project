@@ -15,12 +15,22 @@ import java.util.Date;
 public class Patient extends User{
     
     private String diagnosis;
-
-    public Patient(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,String diagnosis) {
+    private String hospname;
+    
+    public Patient(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,String diagnosis,String hospname) {
         super(uname, pswd, id, name, add, gender, telenum, dob);
         this.diagnosis = diagnosis;
+        this.hospname = hospname;
     }
 
+    public String getHospname() {
+        return hospname;
+    }
+
+    public void setHospname(String hospname) {
+        this.hospname = hospname;
+    }
+    
     public String getDiagnosis() {
         return diagnosis;
     }

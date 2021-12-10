@@ -14,9 +14,22 @@ import java.util.Date;
  */
 public class Nurse extends User {
     
-    public Nurse(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob) {
+    private String hospname;
+    
+    
+    
+    public Nurse(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,String hospname) {
         super(uname, pswd, id, name, add, gender, telenum, dob);
+        this.hospname = hospname;
 
+    }
+
+    public String getHospname() {
+        return hospname;
+    }
+
+    public void setHospname(String hospname) {
+        this.hospname = hospname;
     }
     
 }

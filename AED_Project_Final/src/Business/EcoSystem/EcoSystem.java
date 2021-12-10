@@ -7,7 +7,9 @@ package Business.EcoSystem;
 import Business.Directories.EnterpriseDirectories.HospitalDirectory;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,10 +18,16 @@ import Business.Enterprise.Hospital.Patient;
 public class EcoSystem {
     private static EcoSystem business;
     private HospitalDirectory hospitaldirectory ;
+    private ArrayList<Doctor> doctordirectory;
+    private ArrayList<Nurse> nursedirectory;
+    private ArrayList<Patient> patientdirectory;
 
 
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
+        this.doctordirectory = new ArrayList();
+        this.nursedirectory = new ArrayList();
+        this.patientdirectory = new ArrayList();
     }
     
       public static EcoSystem getInstance(){
@@ -42,26 +50,61 @@ public class EcoSystem {
         hospitaldirectory.addHospital(hosp);
     }
 
-    public void addDoctor(Doctor doctor, String hospitalName) {
-        
-        for(Hospital hosp :hospitaldirectory.getHospitalList()){
-            if(hosp.getEnterpriseName() == hospitalName){
-                hosp.addDoctor(doctor);
-                System.out.println("addDoctor() "+ hosp.getDoctordirectory().get(0).getName());
-                return;
-            }
-            
-        }
+    public ArrayList<Doctor> getDoctordirectory() {
+        return doctordirectory;
+    }
+
+    public void setDoctordirectory(ArrayList<Doctor> doctordirectory) {
+        this.doctordirectory = doctordirectory;
+    }
+
+    public ArrayList<Nurse> getNursedirectory() {
+        return nursedirectory;
+    }
+
+    public void setNursedirectory(ArrayList<Nurse> nursedirectory) {
+        this.nursedirectory = nursedirectory;
+    }
+
+    public ArrayList<Patient> getPatientdirectory() {
+        return patientdirectory;
+    }
+
+    public void setPatientdirectory(ArrayList<Patient> patientdirectory) {
+        this.patientdirectory = patientdirectory;
     }
     
-    public void addPatient(Patient patient, String hospitalName) {
-        for(Hospital hosp :hospitaldirectory.getHospitalList()){
-            if(hosp.getEnterpriseName() == hospitalName){
-                hosp.addPatient(patient);
-                System.out.println("addPatient() "+ hosp.getPatientdirectory().get(0).getName());
-                return;
-            }
-            
+
+    public void addDoctor(Doctor doc) {
+        try{
+        doctordirectory.add(doc);
+        }
+        catch(Exception e){
+            this.doctordirectory = new ArrayList();
+            doctordirectory.add(doc);
+            e.printStackTrace();
+        }
+    }
+
+    public void addNurse(Nurse nur) {
+        try{
+        nursedirectory.add(nur);
+        }
+        catch(Exception e){
+            this.nursedirectory = new ArrayList();
+            nursedirectory.add(nur);
+            e.printStackTrace();
+        }
+    }
+
+    public void addPatient(Patient pat) {
+        try{
+        patientdirectory.add(pat);
+        }
+        catch(Exception e){
+            this.patientdirectory = new ArrayList();
+            patientdirectory.add(pat);
+            e.printStackTrace();
         }
     }
 }

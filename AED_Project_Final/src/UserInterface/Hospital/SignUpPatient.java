@@ -33,6 +33,9 @@ public class SignUpPatient extends javax.swing.JPanel {
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
+        for(Hospital h: ecoSystem.getHospitaldirectory().getHospitalList()){
+            hospitalList.addItem(h.getEnterpriseName());
+        }
     }
    
 
@@ -477,16 +480,13 @@ public class SignUpPatient extends javax.swing.JPanel {
         String address = txtAdd.getText() + txtCity.getText() + txtState.getText() + txtZip.getText();
         //uname, pswd, id, name, add, gender, telenum, dob diag
         //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
-        Patient patient = new Patient(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address, cmb_gender.getSelectedItem().toString(), txt_telenum.getText(),new Date() , txt_diag.getText());
+        Patient patient = new Patient(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address, cmb_gender.getSelectedItem().toString(), txt_telenum.getText(),new Date() , txt_diag.getText(),hospitalList.getSelectedItem().toString());
         System.out.println("Patient added");
-        try {
-            firebaseHelper.addPatientToFirebase(patient, hospitalList.getSelectedItem().toString());
-        } catch (Exception e) {
-            System.out.println("Cant upload hospital in firebase");
-        }
+        
 
-        ecoSystem.addPatient(patient, hospitalList.getSelectedItem().toString());
-
+        ecoSystem.addPatient(patient);
+        dB4OUtil.storeSystem(ecoSystem);
+        
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);

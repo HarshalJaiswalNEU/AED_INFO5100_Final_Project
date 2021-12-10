@@ -15,12 +15,23 @@ import java.util.Date;
 public class Doctor extends User {
 
 private String speciality;
+private String hospname;
 
-    public Doctor(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob, String speciality) {
+    public Doctor(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob, String speciality,String hospname) {
         super(uname, pswd, id, name, add, gender, telenum, dob);
         this.speciality = speciality;
+        this.hospname = hospname;
     }
 
+    public String getHospname() {
+        return hospname;
+    }
+
+    public void setHospname(String hospname) {
+        this.hospname = hospname;
+    }
+
+    
     public String getSpeciality() {
         return speciality;
     }

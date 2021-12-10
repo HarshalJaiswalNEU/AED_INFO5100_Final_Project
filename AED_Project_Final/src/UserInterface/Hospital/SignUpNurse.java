@@ -7,6 +7,7 @@ package UserInterface.Hospital;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
@@ -32,6 +33,9 @@ public class SignUpNurse extends javax.swing.JPanel {
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
+        for(Hospital h: ecoSystem.getHospitaldirectory().getHospitalList()){
+            jComboBox1.addItem(h.getEnterpriseName());
+        }
     }
 
     /**
@@ -444,8 +448,11 @@ public class SignUpNurse extends javax.swing.JPanel {
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
         // TODO add your handling code here:
         String address = txtAdd.getText() + txtCity.getText() + txtState.getText() + txtZip.getText();
-        Nurse nurse = new Nurse(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText(), txtGender.getText(), txtDOB.getText(), new Date());
+        Nurse nurse = new Nurse(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText(), txtGender.getText(), txtDOB.getText(), new Date(),jComboBox1.getSelectedItem().toString());
 
+        ecoSystem.addNurse(nurse);
+        dB4OUtil.storeSystem(ecoSystem);
+        
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);
