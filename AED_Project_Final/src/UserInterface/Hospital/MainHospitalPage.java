@@ -4,8 +4,8 @@
  */
 package UserInterface.Hospital;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
-import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
 
 /**
@@ -18,13 +18,13 @@ public class MainHospitalPage extends javax.swing.JPanel {
      * Creates new form MainHospitalPage1
      */
     MainFrameForm mainScreen;
-    FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
-
-    public MainHospitalPage(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+    
+    private DB4OUtil dB4OUtil;
+    public MainHospitalPage(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
-        this.firebaseHelper = firebaseHelper;
+        this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
     }
 
@@ -233,7 +233,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Doctor") {
 
-            SignUpDoctor doc = new SignUpDoctor(mainScreen, firebaseHelper, ecoSystem);
+            SignUpDoctor doc = new SignUpDoctor(mainScreen, dB4OUtil, ecoSystem);
             mainScreen.setContentPane(doc);
             mainScreen.invalidate();
             mainScreen.validate();
@@ -249,7 +249,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
             //            this.setContentPane(nursesign);
             //            this.invalidate();
             //            this.validate();
-            SignUpNurse n = new SignUpNurse(mainScreen, firebaseHelper, ecoSystem);
+            SignUpNurse n = new SignUpNurse(mainScreen, dB4OUtil, ecoSystem);
 
             //suc.setVisible(true);
             mainScreen.setContentPane(n);
@@ -262,7 +262,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Patient") {
 
-            SignUpPatient signpat = new SignUpPatient(mainScreen, firebaseHelper, ecoSystem);
+            SignUpPatient signpat = new SignUpPatient(mainScreen, dB4OUtil, ecoSystem);
 
             //suc.setVisible(true);
             mainScreen.setContentPane(signpat);
@@ -275,7 +275,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
             //System.out.println("Hospital");
-            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, firebaseHelper, ecoSystem);
+            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, dB4OUtil, ecoSystem);
 
             //suc.setVisible(true);
             mainScreen.setContentPane(s);

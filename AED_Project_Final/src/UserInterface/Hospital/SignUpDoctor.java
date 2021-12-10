@@ -4,6 +4,7 @@
  */
 package UserInterface.Hospital;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
@@ -26,15 +27,14 @@ public class SignUpDoctor extends javax.swing.JPanel {
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
-    public SignUpDoctor(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+    private DB4OUtil dB4OUtil;
+    public SignUpDoctor(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
-        this.firebaseHelper = firebaseHelper;
+        this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
-        for(Hospital h: ecoSystem.getHospitaldirectory().getHospitalList()){
-            hospitalList.addItem(h.getEnterpriseName());
-        }
     }
+    
    
 
     /**

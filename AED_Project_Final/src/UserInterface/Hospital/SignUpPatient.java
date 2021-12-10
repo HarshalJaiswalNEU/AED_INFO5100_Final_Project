@@ -4,6 +4,7 @@
  */
 package UserInterface.Hospital;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Patient;
@@ -26,16 +27,14 @@ public class SignUpPatient extends javax.swing.JPanel {
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
-
-    public SignUpPatient(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+    private DB4OUtil dB4OUtil;
+    public SignUpPatient(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
-        this.firebaseHelper = firebaseHelper;
+        this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
-        for (Hospital h : ecoSystem.getHospitaldirectory().getHospitalList()) {
-            hospitalList.addItem(h.getEnterpriseName());
-        }
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

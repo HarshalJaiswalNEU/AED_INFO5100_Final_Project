@@ -4,8 +4,8 @@
  */
 package UserInterface;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
-import Business.Firebase.FirebaseHelper;
 import UserInterface.Administration.MainAdministrationPage;
 import UserInterface.Dispensary.MainDispensaryPage;
 import UserInterface.DonorBank.MainDonorBankPage;
@@ -28,8 +28,8 @@ public class MainFrameForm extends javax.swing.JFrame {
     /**
      * Creates new form MainFrameForm
      */
-    private FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     // Variables declaration - do not modify
 
     ImageIcon myImage;
@@ -48,19 +48,7 @@ public class MainFrameForm extends javax.swing.JFrame {
     public MainFrameForm() {
         initComponents();
         this.setSize(1200, 750);
-        try {
-            firebaseHelper = new FirebaseHelper();
-        } catch (Exception e) {
-            System.out.println("MainFramrForm: firebase init error"+ e.toString());
-        }
-        this.ecoSystem = firebaseHelper.retriveSystem();
-
-        try {
-            firebaseHelper.addEcoSystem(ecoSystem);
-            firebaseHelper.getEcoSystem();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        this.ecoSystem= dB4OUtil.retrieveSystem();
 
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
 
@@ -211,7 +199,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        MainHospitalPage mhp = new MainHospitalPage(this, firebaseHelper, ecoSystem);
+        MainHospitalPage mhp = new MainHospitalPage(this, dB4OUtil, ecoSystem);
         jSplitPane1.setRightComponent(mhp);
 
 //        this.setContentPane(mhp);
@@ -246,7 +234,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        MainAdministrationPage map = new MainAdministrationPage(this, firebaseHelper, ecoSystem);
+        MainAdministrationPage map = new MainAdministrationPage(this, dB4OUtil, ecoSystem);
         jSplitPane1.setRightComponent(map);
     }//GEN-LAST:event_jButton7ActionPerformed
 

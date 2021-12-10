@@ -14,11 +14,19 @@ import Business.Enterprise.Hospital.Patient;
  * @author harshaljaiswal
  */
 public class EcoSystem {
+    private static EcoSystem business;
     private HospitalDirectory hospitaldirectory ;
 
 
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
+    }
+    
+      public static EcoSystem getInstance(){
+        if(business==null){
+            business=new EcoSystem();
+        }
+        return business;
     }
 
     public HospitalDirectory getHospitaldirectory() {
@@ -45,7 +53,7 @@ public class EcoSystem {
             
         }
     }
-
+    
     public void addPatient(Patient patient, String hospitalName) {
         for(Hospital hosp :hospitaldirectory.getHospitalList()){
             if(hosp.getEnterpriseName() == hospitalName){

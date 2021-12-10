@@ -4,6 +4,7 @@
  */
 package UserInterface.Hospital;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Firebase.FirebaseHelper;
@@ -24,10 +25,11 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
-    public SignUpHospitalAdmin(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+    private DB4OUtil dB4OUtil;
+    public SignUpHospitalAdmin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
-        this.firebaseHelper = firebaseHelper;
+        this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
     }
 
@@ -320,14 +322,12 @@ public class SignUpHospitalAdmin extends javax.swing.JPanel {
         Hospital hosp = new Hospital(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
         System.out.println("Hospital"+hosp.getUsername());
 
-        try {
-            firebaseHelper.addHospitalToFirebase(hosp);
-        } catch (Exception e) {
-            System.out.println("Cant upload hospital in firebase");
-        }
-
         ecoSystem.addHospital(hosp);
-
+        for(Hospital h: ecoSystem.getHospitaldirectory().getHospitalList()){
+            System.out.println("hosp: "+ h.getEnterpriseName());
+        }
+        dB4OUtil.storeSystem(ecoSystem);
+        
         MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);
