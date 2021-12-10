@@ -54,6 +54,14 @@ public class MainFrameForm extends javax.swing.JFrame {
             System.out.println("MainFramrForm: firebase init error"+ e.toString());
         }
         this.ecoSystem = firebaseHelper.retriveSystem();
+
+        try {
+            firebaseHelper.addEcoSystem(ecoSystem);
+            firebaseHelper.getEcoSystem();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
 //        ImgLab1.setIcon(setIcon("/Users/harshaljaiswal/Desktop/MIS_AED/AED_INFO5100_Final_Project/AEDFinalProjectTry1/donate.jpg"));
 
     }
