@@ -8,6 +8,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
@@ -27,7 +28,8 @@ public class MainAdministrationPage extends javax.swing.JPanel {
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
-     private DB4OUtil dB4OUtil;
+    private DB4OUtil dB4OUtil;
+
     public MainAdministrationPage(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
@@ -35,7 +37,6 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         populateTable();
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +53,10 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tb2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tb3 = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tb4 = new javax.swing.JTable();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Administration");
@@ -89,12 +94,40 @@ public class MainAdministrationPage extends javax.swing.JPanel {
             }
         });
 
+        tb3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Doc name", "user id", "pass", "reg", "add"
+            }
+        ));
+        jScrollPane3.setViewportView(tb3);
+
+        tb4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Doc name", "user id", "pass", "reg", "add"
+            }
+        ));
+        jScrollPane4.setViewportView(tb4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,13 +144,17 @@ public class MainAdministrationPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(99, 99, 99)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(67, 67, 67)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -131,11 +168,12 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         }
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         String hospitalName = model.getValueAt(selectedRow, 0).toString();
-        System.out.println(" hospitalDoctorSeach: "+hospitalName);
+        System.out.println(" hospitalDoctorSeach: " + hospitalName);
         Hospital h = ecoSystem.getHospitaldirectory().findHospital(hospitalName);
 //        System.out.println(" "+h.getDoctordirectory().get(0).getName());
         populateDoctorTable(ecoSystem.getDoctordirectory(), hospitalName);
-//        populatePatientTable(h.getPatientdirectory());
+        populatePatientTable(ecoSystem.getPatientdirectory(), hospitalName);
+        populateNurseTable(ecoSystem.getNursedirectory(), hospitalName);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void populateTable() {
@@ -154,49 +192,69 @@ public class MainAdministrationPage extends javax.swing.JPanel {
             model.addRow(row);
         }
 
-      
     }
-    
+
     private void populateDoctorTable(ArrayList<Doctor> doctors, String hosp) {
         DefaultTableModel model = (DefaultTableModel) tb2.getModel();
         model.setRowCount(0);
 
         for (Doctor d : doctors) {
-            System.out.println(d.getHospname() + " "+ hosp);
+            System.out.println(d.getHospname() + " " + hosp);
             Object[] row = new Object[5];
-            if(d.getHospname().equals(hosp) ){
-            
-            row[0] = d.getName();
-            row[1] = d.getUname();
+            if (d.getHospname().equals(hosp)) {
+
+                row[0] = d.getName();
+                row[1] = d.getUname();
             }
 
             model.addRow(row);
         }
 
-      
     }
-    
-    private void populatePatientTable(ArrayList<Patient> patient) {
-        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
+
+    private void populateNurseTable(ArrayList<Nurse> nurse, String hosp) {
+        DefaultTableModel model = (DefaultTableModel) tb3.getModel();
+        model.setRowCount(0);
+
+        for (Nurse d : nurse) {
+
+            Object[] row = new Object[5];
+            if (d.getHospname().equals(hosp)) {
+                row[0] = d.getName();
+                row[1] = d.getUname();
+            }
+
+            model.addRow(row);
+        }
+
+    }
+
+    private void populatePatientTable(ArrayList<Patient> patient, String hosp) {
+        DefaultTableModel model = (DefaultTableModel) tb4.getModel();
         model.setRowCount(0);
 
         for (Patient d : patient) {
 
             Object[] row = new Object[5];
-            row[0] = d.getName();
-            row[1] = d.getUname();
+            if (d.getHospname().equals(hosp)) {
+                row[0] = d.getName();
+                row[1] = d.getUname();
+            }
 
             model.addRow(row);
         }
 
-      
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tb1;
     private javax.swing.JTable tb2;
+    private javax.swing.JTable tb3;
+    private javax.swing.JTable tb4;
     // End of variables declaration//GEN-END:variables
 }
