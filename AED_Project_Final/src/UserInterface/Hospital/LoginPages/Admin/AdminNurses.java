@@ -7,7 +7,10 @@ package UserInterface.Hospital.LoginPages.Admin;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Nurse;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +32,7 @@ public class AdminNurses extends javax.swing.JPanel {
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
         this.hospital = h;
+        populateNurseTable();
     }
 
     /**
@@ -41,29 +45,101 @@ public class AdminNurses extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblNurse = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Manage Nurse");
+
+        tblNurse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name", "UserName", "Gender", "Address"
+            }
+        ));
+        jScrollPane1.setViewportView(tblNurse);
+
+        jButton1.setText("Delete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(477, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(447, 447, 447))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jButton1)))
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addContainerGap(529, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(478, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                int selectedRow = tblNurse.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblNurse.getModel();
+        String nurseUName = model.getValueAt(selectedRow, 1).toString();
+        System.out.println(" nurse uname: " + nurseUName);
+        ecoSystem.deleteNurse(nurseUName);
+        dB4OUtil.storeSystem(ecoSystem);
+        populateNurseTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void populateNurseTable(){
+    DefaultTableModel model = (DefaultTableModel) tblNurse.getModel();
+    model.setRowCount(0);
+
+    for (Nurse n : ecoSystem.getNursedirectory()) {
+
+        if (n.getHospname().equals(hospital.getEnterpriseName())) {
+            Object[] row = new Object[5];
+            row[0] = n.getName();
+            row[1] = n.getUname();
+            row[2] = n.getGender();
+            row[3] = n.getAdd();
+            model.addRow(row);
+
+        }
+
+    }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblNurse;
     // End of variables declaration//GEN-END:variables
 }
