@@ -79,7 +79,6 @@ public class SignUpPatient extends javax.swing.JPanel {
         lbl_admintitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_admintitle.setText("Create Patient Profile");
 
-        txtFullName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFullNameActionPerformed(evt);
