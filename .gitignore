@@ -43,4 +43,7 @@ Thumbs.db
 /AED_Project_Final/nbproject/private/
 /AED_Project_Final/build/
 /AED_Project_Final/dist/
+AED_Project_Final/nbproject/private/private.properties
+AED_Project_Final/nbproject/private/private.xml
+
 *.class
