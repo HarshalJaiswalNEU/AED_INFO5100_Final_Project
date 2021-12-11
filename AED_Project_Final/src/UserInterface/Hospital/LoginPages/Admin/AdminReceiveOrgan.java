@@ -7,7 +7,9 @@ package UserInterface.Hospital.LoginPages.Admin;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +31,8 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
         this.hospital = h;
+
+        populateTable();
     }
 
     /**
@@ -42,11 +46,14 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb1 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        name = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Search and Receive organ");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,10 +61,19 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Type", "Blood group", "Entity name", "Title 4"
+                "Type", "Blood group", "Entity name", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb1);
+
+        jLabel2.setText("Name:");
+
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -68,8 +84,15 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(447, 447, 447))
             .addGroup(layout.createSequentialGroup()
-                .addGap(187, 187, 187)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(236, 236, 236)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -78,15 +101,64 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        populateTable(name.getText().toLowerCase().toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (DonateEntity d : ecoSystem.getDonateEntityList()) {
+            System.out.println("populatetable " + d.getEntityName());
+
+            Object[] row = new Object[5];
+            row[0] = d.getType();
+            row[1] = d.getBloodGroup();
+            row[2] = d.getEntityName();
+            row[3] = d.getStatus();
+            model.addRow(row);
+
+        }
+
+    }
+
+    private void populateTable(String name) {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (DonateEntity d : ecoSystem.getDonateEntityList()) {
+
+            if (d.getEntityName().toLowerCase().contains(name)) {
+                Object[] row = new Object[5];
+                row[0] = d.getType();
+                row[1] = d.getBloodGroup();
+                row[2] = d.getEntityName();
+                row[3] = d.getStatus();
+                model.addRow(row);
+            }
+
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField name;
+    private javax.swing.JTable tb1;
     // End of variables declaration//GEN-END:variables
 }
