@@ -221,7 +221,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        MainLabPage mlp = new MainLabPage();
+        MainLabPage mlp = new MainLabPage(this, dB4OUtil, ecoSystem);
         jSplitPane1.setRightComponent(mlp);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -239,7 +239,7 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        MainLogisticsPage mlp = new MainLogisticsPage();
+        MainLogisticsPage mlp = new MainLogisticsPage(this, dB4OUtil, ecoSystem);
         jSplitPane1.setRightComponent(mlp);
     }//GEN-LAST:event_jButton2ActionPerformed
 
