@@ -199,7 +199,7 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (Doctor d : doctors) {
-            System.out.println(d.getHospname() + " " + hosp);
+            
             Object[] row = new Object[5];
             if (d.getHospname().equals(hosp)) {
 

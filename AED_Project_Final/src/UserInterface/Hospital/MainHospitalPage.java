@@ -6,7 +6,10 @@ package UserInterface.Hospital;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Hospital;
+import UserInterface.Hospital.LoginPages.AdminLogin;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,8 +22,8 @@ public class MainHospitalPage extends javax.swing.JPanel {
      */
     MainFrameForm mainScreen;
     private EcoSystem ecoSystem;
-    
     private DB4OUtil dB4OUtil;
+
     public MainHospitalPage(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
@@ -171,6 +174,29 @@ public class MainHospitalPage extends javax.swing.JPanel {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
+        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
+            Hospital ho = (Hospital) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if(ho == null){
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            }else{
+                AdminLogin ap = new AdminLogin(mainScreen, dB4OUtil, ecoSystem, ho);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+            
+            
+//            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
+//                AdminPage adminpg = new AdminPage(system, dB4OUtil);
+//                this.setContentPane(adminpg);
+//                this.invalidate();
+//                this.validate();
+//                return;
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Incorrect credential");
+//            }
+        }
 
         //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
         //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
@@ -215,17 +241,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
         //
         //        }
         //
-        //        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-        //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-        //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-        //                this.setContentPane(adminpg);
-        //                this.invalidate();
-        //                this.validate();
-        //                return;
-        //            } else {
-        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-        //            }
-        //        }
+
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
