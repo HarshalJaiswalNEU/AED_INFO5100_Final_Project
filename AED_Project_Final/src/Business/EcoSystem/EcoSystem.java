@@ -5,11 +5,12 @@
 package Business.EcoSystem;
 
 import Business.Directories.EnterpriseDirectories.HospitalDirectory;
+import Business.Enterprise.DonorBank.Donor;
+import Business.Enterprise.DonorBank.DonorBank;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
-import Business.Organization.DonateEntity;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +21,10 @@ public class EcoSystem {
     private static EcoSystem business;
     private HospitalDirectory hospitaldirectory ;
     private ArrayList<Doctor> doctordirectory;
+    private ArrayList<Donor> donordirectory;
+    private ArrayList<DonorBank> donorbankdirectory;
     private ArrayList<Nurse> nursedirectory;
     private ArrayList<Patient> patientdirectory;
-    private ArrayList<DonateEntity> donateEntityList;
 
 
     public EcoSystem() {
@@ -30,7 +32,6 @@ public class EcoSystem {
         this.doctordirectory = new ArrayList();
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
-        this.donateEntityList = new ArrayList();
     }
     
       public static EcoSystem getInstance(){
@@ -100,14 +101,6 @@ public class EcoSystem {
         }
     }
 
-    public ArrayList<DonateEntity> getDonateEntityList() {
-        return donateEntityList;
-    }
-
-    public void setDonateEntityList(ArrayList<DonateEntity> donateEntityList) {
-        this.donateEntityList = donateEntityList;
-    }
-
     public void addPatient(Patient pat) {
         try{
         patientdirectory.add(pat);
@@ -154,18 +147,26 @@ public class EcoSystem {
             }
         }
     }
-    
-    public void addDonateEntity(DonateEntity de){
-        donateEntityList.add(de);
-    }
 
-    public Doctor findDoctorByUserName(String usrName) {
-        for(Doctor d : doctordirectory){
-            if(d.getUname().equals(usrName)){
-                
-                return d;
-            }
+    public void addDonorBank(DonorBank donbank) {
+        try{
+        donorbankdirectory.add(donbank);
         }
-        return null;
+        catch(Exception e){
+            this.donorbankdirectory = new ArrayList();
+            donorbankdirectory.add(donbank);
+            e.printStackTrace(); 
+        }
+    }
+    
+    public void addDonor(Donor donor) {
+        try{
+        donordirectory.add(donor);
+        }
+        catch(Exception e){
+            this.donordirectory = new ArrayList();
+            donordirectory.add(donor);
+            e.printStackTrace();
+        }
     }
 }

@@ -4,6 +4,7 @@
  */
 package UserInterface.DonorBank;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
@@ -18,13 +19,13 @@ public class MainDonorBankPage extends javax.swing.JPanel {
      * Creates new form MainDonorBankPage
      */
     MainFrameForm mainScreen;
-    FirebaseHelper firebaseHelper;
+    private DB4OUtil dB4OUtil;
     private EcoSystem ecoSystem;
 
-    public MainDonorBankPage(MainFrameForm mainScreen, FirebaseHelper firebaseHelper, EcoSystem ecoSystem) {
+    public MainDonorBankPage(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
-        this.firebaseHelper = firebaseHelper;
+        this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
     }
 
@@ -55,7 +56,7 @@ public class MainDonorBankPage extends javax.swing.JPanel {
 
         cmb_Role.setEditable(true);
         cmb_Role.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Organ", "Blood", "Donor","Donor Admin"}));
+        cmb_Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Donor","Donor Admin"}));
         cmb_Role.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_RoleActionPerformed(evt);
@@ -215,51 +216,30 @@ public class MainDonorBankPage extends javax.swing.JPanel {
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
 
-        if (cmb_Role.getSelectedItem().toString() == "Organ") {
-
-//            SignUpOrgan doc = new SignUpOrgan(mainScreen, firebaseHelper, ecoSystem);
-//            mainScreen.setContentPane(doc);
-//            mainScreen.invalidate();
-//            mainScreen.validate();
-
-            //            this.setContentPane(docsign);
-            //            this.invalidate();
-            //            this.validate();
-            return;
-
-        }
-        if (cmb_Role.getSelectedItem().toString() == "Blood") {
-
-            //            this.setContentPane(nursesign);
-            //            this.invalidate();
-            //            this.validate();
-            return;
-
-        }
-
+       
         if (cmb_Role.getSelectedItem().toString() == "Donor") {
 
-//            SignUpDonor signdon = new SignUpDonor(mainScreen, firebaseHelper, ecoSystem);
-
-            //suc.setVisible(true);
-//            mainScreen.setContentPane(signdon);
-//            //             this.add(s);
+            SignUpDonor signdon = new SignUpDonor(mainScreen, dB4OUtil, ecoSystem);
 //
-//            mainScreen.invalidate();
-//            mainScreen.validate();
+//            //suc.setVisible(true);
+            mainScreen.setContentPane(signdon);
+////            //             this.add(s);
+////
+            mainScreen.invalidate();
+            mainScreen.validate();
 
         }
 
         if (cmb_Role.getSelectedItem().toString() == "Donor Admin") {
-            //System.out.println("Hospital");
-//            SignUpDonorAdmin s = new SignUpDonorAdmin(mainScreen, firebaseHelper, ecoSystem);
-//
-//            //suc.setVisible(true);
-//            mainScreen.setContentPane(s);
-//            //             this.add(s);
-//
-//            mainScreen.invalidate();
-//            mainScreen.validate();
+           // System.out.println("Hospital");
+            SignUpDonorAdmin s = new SignUpDonorAdmin(mainScreen, dB4OUtil, ecoSystem);
+
+            //suc.setVisible(true);
+            mainScreen.setContentPane(s);
+            //             this.add(s);
+
+            mainScreen.invalidate();
+            mainScreen.validate();
 
         }
     }//GEN-LAST:event_btnSigninActionPerformed

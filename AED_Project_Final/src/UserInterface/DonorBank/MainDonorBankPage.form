@@ -100,7 +100,7 @@
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Organ&quot;, &quot;Blood&quot;, &quot;Donor&quot;,&quot;Donor Admin&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Donor&quot;,&quot;Donor Admin&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>

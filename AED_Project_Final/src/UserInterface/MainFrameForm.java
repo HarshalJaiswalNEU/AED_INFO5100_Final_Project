@@ -209,8 +209,8 @@ public class MainFrameForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-//        MainDonorBankPage mdp = new MainDonorBankPage();
-//        jSplitPane1.setRightComponent(mdp);
+        MainDonorBankPage mdp = new MainDonorBankPage(this, dB4OUtil, ecoSystem);
+        jSplitPane1.setRightComponent(mdp);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
