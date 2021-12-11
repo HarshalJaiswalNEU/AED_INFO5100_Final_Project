@@ -43,3 +43,4 @@ Thumbs.db
 /AED_Project_Final/nbproject/private/
 /AED_Project_Final/build/
 /AED_Project_Final/dist/
+*.class
