@@ -107,4 +107,40 @@ public class EcoSystem {
             e.printStackTrace();
         }
     }
+
+    public Object loginCheck(String usr, String pass) {
+        
+        for(Doctor d:doctordirectory){
+            System.out.println("LoginCheck(doc): "+d.getUname() +" "+ d.getPswd());
+            if(d.getUname().equals(usr) && d.getPswd().equals(pass)){
+                return d;
+            }
+        }
+        
+        for(Patient d:patientdirectory){
+            System.out.println("LoginCheck(doc): "+d.getUname() +" "+ d.getPswd());
+            if(d.getUname().equals(usr) && d.getPswd().equals(pass)){
+                return d;
+            }
+        }
+        
+        for(Hospital ho: hospitaldirectory.getHospitalList()){
+            System.out.println("LoginCheck(ho): "+ ho.getUsername()+" "+ ho.getPassword());
+            if(ho.getUsername().equals(usr) && ho.getPassword().equals(pass)){
+                System.out.println("LoginCheck(): matched");
+                return ho;
+            }
+        }
+        
+        return null;
+    }
+
+    public void deleteDoctor(String doctorUName) {
+        for(Doctor d : doctordirectory){
+            if(d.getUname().equals(doctorUName)){
+                doctordirectory.remove(d);
+                return;
+            }
+        }
+    }
 }
