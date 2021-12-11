@@ -149,7 +149,7 @@ public class EcoSystem {
 
     public void addDonateEntity(DonateEntity de) {
         System.out.println("addDonateEntity()");
-         donateEntityList.add(de);
+        donateEntityList.add(de);
 //        try {
 //           
 //        } catch (Exception e) {

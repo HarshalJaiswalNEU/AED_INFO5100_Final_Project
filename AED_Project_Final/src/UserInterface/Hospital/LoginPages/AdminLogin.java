@@ -9,6 +9,8 @@ import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
 import UserInterface.Hospital.LoginPages.Admin.AdminDoctor;
 import UserInterface.Hospital.LoginPages.Admin.AdminDonateOrgan;
+import UserInterface.Hospital.LoginPages.Admin.AdminNurses;
+import UserInterface.Hospital.LoginPages.Admin.AdminPatient;
 import UserInterface.Hospital.LoginPages.Admin.AdminReceiveOrgan;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
@@ -185,6 +187,8 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        AdminPatient ap = new AdminPatient(mainScreen, dB4OUtil, ecoSystem, hospital);
+        jSplitPane1.setRightComponent(ap);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -202,6 +206,8 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        AdminNurses an = new AdminNurses(mainScreen, dB4OUtil, ecoSystem, hospital);
+        jSplitPane1.setRightComponent(an);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -216,7 +222,7 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-         MainFrameForm suc = new MainFrameForm();
+        MainFrameForm suc = new MainFrameForm();
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
