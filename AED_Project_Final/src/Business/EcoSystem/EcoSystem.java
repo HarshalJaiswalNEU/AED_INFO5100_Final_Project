@@ -11,6 +11,7 @@ import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import Business.Organization.DonateEntity;
 import java.util.ArrayList;
 
 /**
@@ -18,25 +19,27 @@ import java.util.ArrayList;
  * @author harshaljaiswal
  */
 public class EcoSystem {
+
     private static EcoSystem business;
-    private HospitalDirectory hospitaldirectory ;
+    private HospitalDirectory hospitaldirectory;
     private ArrayList<Doctor> doctordirectory;
     private ArrayList<Donor> donordirectory;
     private ArrayList<DonorBank> donorbankdirectory;
     private ArrayList<Nurse> nursedirectory;
     private ArrayList<Patient> patientdirectory;
-
+    private ArrayList<DonateEntity> donateEntityList;
 
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
         this.doctordirectory = new ArrayList();
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
+        this.donateEntityList = new ArrayList();
     }
-    
-      public static EcoSystem getInstance(){
-        if(business==null){
-            business=new EcoSystem();
+
+    public static EcoSystem getInstance() {
+        if (business == null) {
+            business = new EcoSystem();
         }
         return business;
     }
@@ -50,7 +53,7 @@ public class EcoSystem {
     }
 
     public void addHospital(Hospital hosp) {
-        System.out.println("addHospital() in ecosystem: "+hosp.getEnterpriseName());
+        System.out.println("addHospital() in ecosystem: " + hosp.getEnterpriseName());
         hospitaldirectory.addHospital(hosp);
     }
 
@@ -77,13 +80,11 @@ public class EcoSystem {
     public void setPatientdirectory(ArrayList<Patient> patientdirectory) {
         this.patientdirectory = patientdirectory;
     }
-    
 
     public void addDoctor(Doctor doc) {
-        try{
-        doctordirectory.add(doc);
-        }
-        catch(Exception e){
+        try {
+            doctordirectory.add(doc);
+        } catch (Exception e) {
             this.doctordirectory = new ArrayList();
             doctordirectory.add(doc);
             e.printStackTrace();
@@ -91,10 +92,9 @@ public class EcoSystem {
     }
 
     public void addNurse(Nurse nur) {
-        try{
-        nursedirectory.add(nur);
-        }
-        catch(Exception e){
+        try {
+            nursedirectory.add(nur);
+        } catch (Exception e) {
             this.nursedirectory = new ArrayList();
             nursedirectory.add(nur);
             e.printStackTrace();
@@ -102,10 +102,9 @@ public class EcoSystem {
     }
 
     public void addPatient(Patient pat) {
-        try{
-        patientdirectory.add(pat);
-        }
-        catch(Exception e){
+        try {
+            patientdirectory.add(pat);
+        } catch (Exception e) {
             this.patientdirectory = new ArrayList();
             patientdirectory.add(pat);
             e.printStackTrace();
@@ -113,74 +112,79 @@ public class EcoSystem {
     }
 
     public Object loginCheck(String usr, String pass) {
-        
-        for(Doctor d:doctordirectory){
-            System.out.println("LoginCheck(doc): "+d.getUname() +" "+ d.getPswd());
-            if(d.getUname().equals(usr) && d.getPswd().equals(pass)){
+
+        for (Doctor d : doctordirectory) {
+            System.out.println("LoginCheck(doc): " + d.getUname() + " " + d.getPswd());
+            if (d.getUname().equals(usr) && d.getPswd().equals(pass)) {
                 return d;
             }
         }
-        
-        for(Patient d:patientdirectory){
-            System.out.println("LoginCheck(doc): "+d.getUname() +" "+ d.getPswd());
-            if(d.getUname().equals(usr) && d.getPswd().equals(pass)){
+
+        for (Patient d : patientdirectory) {
+            System.out.println("LoginCheck(doc): " + d.getUname() + " " + d.getPswd());
+            if (d.getUname().equals(usr) && d.getPswd().equals(pass)) {
                 return d;
             }
         }
-        
-        for(Hospital ho: hospitaldirectory.getHospitalList()){
-            System.out.println("LoginCheck(ho): "+ ho.getUsername()+" "+ ho.getPassword());
-            if(ho.getUsername().equals(usr) && ho.getPassword().equals(pass)){
+
+        for (Hospital ho : hospitaldirectory.getHospitalList()) {
+            System.out.println("LoginCheck(ho): " + ho.getUsername() + " " + ho.getPassword());
+            if (ho.getUsername().equals(usr) && ho.getPassword().equals(pass)) {
                 System.out.println("LoginCheck(): matched");
                 return ho;
             }
         }
-        
+
         return null;
     }
 
     public void deleteDoctor(String doctorUName) {
-        for(Doctor d : doctordirectory){
-            if(d.getUname().equals(doctorUName)){
+        for (Doctor d : doctordirectory) {
+            if (d.getUname().equals(doctorUName)) {
                 doctordirectory.remove(d);
                 return;
             }
         }
     }
-<<<<<<< Updated upstream
-=======
-    
-    public void addDonateEntity(DonateEntity de){
-        try{
-        donateEntityList.add(de);
-        }
-        catch(Exception e){
-            this.donateEntityList = new ArrayList();
-            donateEntityList.add(de);
-            e.printStackTrace();
-        }
-    }
->>>>>>> Stashed changes
 
-    public void addDonorBank(DonorBank donbank) {
-        try{
-        donorbankdirectory.add(donbank);
-        }
-        catch(Exception e){
-            this.donorbankdirectory = new ArrayList();
-            donorbankdirectory.add(donbank);
-            e.printStackTrace(); 
-        }
+    public void addDonateEntity(DonateEntity de) {
+        System.out.println("addDonateEntity()");
+         donateEntityList.add(de);
+//        try {
+//           
+//        } catch (Exception e) {
+//            this.donateEntityList = new ArrayList();
+//            donateEntityList.add(de);
+//            e.printStackTrace();
+//        }
     }
-    
+
     public void addDonor(Donor donor) {
-        try{
-        donordirectory.add(donor);
-        }
-        catch(Exception e){
+        try {
+            donordirectory.add(donor);
+        } catch (Exception e) {
             this.donordirectory = new ArrayList();
             donordirectory.add(donor);
+
+        }
+    }
+
+    public void addDonorBank(DonorBank donor) {
+        try {
+            donorbankdirectory.add(donor);
+        } catch (Exception e) {
+            this.donorbankdirectory = new ArrayList();
+            donorbankdirectory.add(donor);
             e.printStackTrace();
         }
+    }
+
+    public Doctor findDoctorByUserName(String usrName) {
+        for (Doctor d : doctordirectory) {
+            if (d.getUname().equals(usrName)) {
+                return d;
+            }
+        }
+        return null;
     }
 }

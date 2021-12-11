@@ -25,6 +25,7 @@ public class DonateEntity {
     public String type;
     public String bloodGroup;
     public String entityName;
+    public String Status;
 
     public DonateEntity() {
 
@@ -110,5 +111,12 @@ public class DonateEntity {
         this.entityName = entityName;
     }
 
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
 }
