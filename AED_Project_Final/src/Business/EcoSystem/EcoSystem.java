@@ -11,6 +11,8 @@ import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import Business.Enterprise.Logistics.Handler;
+import Business.Enterprise.Logistics.Vehicle;
 import Business.Organization.DonateEntity;
 import java.util.ArrayList;
 
@@ -28,6 +30,8 @@ public class EcoSystem {
     private ArrayList<Nurse> nursedirectory;
     private ArrayList<Patient> patientdirectory;
     private ArrayList<DonateEntity> donateEntityList;
+    private ArrayList<Handler> handlerdirectory;
+    private ArrayList<Vehicle> vehicledirectory;
 
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
@@ -35,6 +39,8 @@ public class EcoSystem {
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
         this.donateEntityList = new ArrayList();
+        this.handlerdirectory = new ArrayList();
+        this.vehicledirectory = new ArrayList();
     }
 
     public static EcoSystem getInstance() {
@@ -147,6 +153,24 @@ public class EcoSystem {
         }
     }
 
+    public void deleteNurse(String NurseUName) {
+        for (Nurse n : nursedirectory) {
+            if (n.getUname().equals(NurseUName)) {
+                nursedirectory.remove(n);
+                return;
+            }
+        }
+    }
+
+    public void deletePatient(String PatientUName) {
+        for (Patient p : patientdirectory) {
+            if (p.getUname().equals(PatientUName)) {
+                patientdirectory.remove(p);
+                return;
+            }
+        }
+    }
+
     public void addDonateEntity(DonateEntity de) {
         System.out.println("addDonateEntity()");
         donateEntityList.add(de);
@@ -187,4 +211,49 @@ public class EcoSystem {
         }
         return null;
     }
+
+    public ArrayList<Donor> getDonordirectory() {
+        return donordirectory;
+    }
+
+    public void setDonordirectory(ArrayList<Donor> donordirectory) {
+        this.donordirectory = donordirectory;
+    }
+
+    public ArrayList<DonorBank> getDonorbankdirectory() {
+        return donorbankdirectory;
+    }
+
+    public void setDonorbankdirectory(ArrayList<DonorBank> donorbankdirectory) {
+        this.donorbankdirectory = donorbankdirectory;
+    }
+
+    public ArrayList<DonateEntity> getDonateEntityList() {
+        return donateEntityList;
+    }
+
+    public void setDonateEntityList(ArrayList<DonateEntity> donateEntityList) {
+        this.donateEntityList = donateEntityList;
+    }
+
+    public void addHandler(Handler handler) {
+        try {
+            handlerdirectory.add(handler);
+        } catch (Exception e) {
+            this.handlerdirectory = new ArrayList();
+            handlerdirectory.add(handler);
+
+        }
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        try {
+            vehicledirectory.add(vehicle);
+        } catch (Exception e) {
+            this.vehicledirectory = new ArrayList();
+            vehicledirectory.add(vehicle);
+
+        }
+    }
+
 }
