@@ -147,6 +147,20 @@ public class EcoSystem {
             }
         }
     }
+<<<<<<< Updated upstream
+=======
+    
+    public void addDonateEntity(DonateEntity de){
+        try{
+        donateEntityList.add(de);
+        }
+        catch(Exception e){
+            this.donateEntityList = new ArrayList();
+            donateEntityList.add(de);
+            e.printStackTrace();
+        }
+    }
+>>>>>>> Stashed changes
 
     public void addDonorBank(DonorBank donbank) {
         try{
