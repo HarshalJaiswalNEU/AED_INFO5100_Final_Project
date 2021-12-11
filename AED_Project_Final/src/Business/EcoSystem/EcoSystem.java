@@ -9,6 +9,7 @@ import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import Business.Organization.DonateEntity;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,7 @@ public class EcoSystem {
     private ArrayList<Doctor> doctordirectory;
     private ArrayList<Nurse> nursedirectory;
     private ArrayList<Patient> patientdirectory;
+    private ArrayList<DonateEntity> donateEntityList;
 
 
     public EcoSystem() {
@@ -28,6 +30,7 @@ public class EcoSystem {
         this.doctordirectory = new ArrayList();
         this.nursedirectory = new ArrayList();
         this.patientdirectory = new ArrayList();
+        this.donateEntityList = new ArrayList();
     }
     
       public static EcoSystem getInstance(){
@@ -97,6 +100,14 @@ public class EcoSystem {
         }
     }
 
+    public ArrayList<DonateEntity> getDonateEntityList() {
+        return donateEntityList;
+    }
+
+    public void setDonateEntityList(ArrayList<DonateEntity> donateEntityList) {
+        this.donateEntityList = donateEntityList;
+    }
+
     public void addPatient(Patient pat) {
         try{
         patientdirectory.add(pat);
@@ -142,5 +153,19 @@ public class EcoSystem {
                 return;
             }
         }
+    }
+    
+    public void addDonateEntity(DonateEntity de){
+        donateEntityList.add(de);
+    }
+
+    public Doctor findDoctorByUserName(String usrName) {
+        for(Doctor d : doctordirectory){
+            if(d.getUname().equals(usrName)){
+                
+                return d;
+            }
+        }
+        return null;
     }
 }

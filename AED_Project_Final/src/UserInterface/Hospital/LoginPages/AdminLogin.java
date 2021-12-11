@@ -8,6 +8,7 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
 import UserInterface.Hospital.LoginPages.Admin.AdminDoctor;
+import UserInterface.Hospital.LoginPages.Admin.AdminDonateOrgan;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -193,6 +194,8 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        AdminDonateOrgan ado = new AdminDonateOrgan(mainScreen, dB4OUtil, ecoSystem, hospital);
+        jSplitPane1.setRightComponent(ado);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
