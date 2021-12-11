@@ -28,6 +28,7 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
 
     public AdminDonateOrgan(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Hospital h) {
         initComponents();
+        System.out.println("AdminDonateOrg() init");
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
@@ -186,7 +187,8 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
         de.setEntityName(entity.getText().toString());
         de.setDonorEnterprise(hospital);
         de.setDonorDoctor(ecoSystem.findDoctorByUserName(doctorList.getSelectedItem().toString()));
-        
+        de.setStatus("avaliable");
+        System.out.println("dede: "+de.getDonorDoctor().getName());
         ecoSystem.addDonateEntity(de);
     }//GEN-LAST:event_jButton1ActionPerformed
 
