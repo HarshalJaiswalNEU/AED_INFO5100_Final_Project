@@ -6,8 +6,12 @@ package UserInterface.Hospital;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 import UserInterface.Hospital.LoginPages.AdminLogin;
+import UserInterface.Hospital.LoginPages.Doctor.DoctorLogin;
+import UserInterface.Hospital.LoginPages.Patient.PatientLogin;
 import UserInterface.MainFrameForm;
 import javax.swing.JOptionPane;
 
@@ -185,63 +189,38 @@ public class MainHospitalPage extends javax.swing.JPanel {
                 mainScreen.validate();
                 return;
             }
-            
-            
-//            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-//                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-//                this.setContentPane(adminpg);
-//                this.invalidate();
-//                this.validate();
-//                return;
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Incorrect credential");
-//            }
+
         }
 
-        //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
-        //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
-        //            if (c == null) {
-        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-        //            } else {
-        //                CustomerMainPage custmp = new CustomerMainPage(system, dB4OUtil, c);
-        //                this.setContentPane(custmp);
-        //                this.invalidate();
-        //                this.validate();
-        //                return;
-        //            }
-        //
-        //        }
-        //        if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-        //            Restaurant r = system.loginResaturant(txtUsername.getText(), txtPassword.getText());
-        //
-        //            if (r == null) {
-        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-        //            } else {
-        //                RestaurantMainPage restmp = new RestaurantMainPage(system, dB4OUtil, r);
-        //                this.setContentPane(restmp);
-        //                this.invalidate();
-        //                this.validate();
-        //                return;
-        //            }
-        //
-        //        }
-        //
-        //        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-        //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
-        //
-        //            if (r == null) {
-        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-        //            } else {
-        //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
-        //                this.setContentPane(delimp);
-        //                this.invalidate();
-        //                this.validate();
-        //                return;
-        //            }
-        //
-        //        }
-        //
+        
+  
+        if (cmb_Role.getSelectedItem().toString() == "Patient") {
+            System.out.println("selecteditem");
+            Patient pa = (Patient) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (pa == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                PatientLogin pl = new PatientLogin(mainScreen, dB4OUtil, ecoSystem, pa);
+                mainScreen.setContentPane(pl);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+                    }
 
+        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
+            System.out.println("selecteditem");
+            Doctor dr = (Doctor) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (dr == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                DoctorLogin dl = new DoctorLogin(mainScreen, dB4OUtil, ecoSystem, dr);
+                mainScreen.setContentPane(dl);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed

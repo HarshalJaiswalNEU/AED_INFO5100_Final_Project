@@ -7,6 +7,7 @@ package UserInterface.Hospital.LoginPages;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 import UserInterface.Hospital.LoginPages.Admin.AdminDoctor;
 import UserInterface.Hospital.LoginPages.Admin.AdminDonateOrgan;
 import UserInterface.Hospital.LoginPages.Admin.AdminNurses;
@@ -29,13 +30,17 @@ public class AdminLogin extends javax.swing.JPanel {
     private EcoSystem ecoSystem;
     private DB4OUtil dB4OUtil;
     Hospital hospital;
-
+    
     public AdminLogin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Hospital h) {
         initComponents();
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
         this.hospital = h;
+    }
+
+    public AdminLogin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Patient pa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

@@ -126,10 +126,10 @@ public class EcoSystem {
             }
         }
 
-        for (Patient d : patientdirectory) {
-            System.out.println("LoginCheck(doc): " + d.getUname() + " " + d.getPswd());
-            if (d.getUname().equals(usr) && d.getPswd().equals(pass)) {
-                return d;
+        for (Patient p : patientdirectory) {
+            System.out.println("LoginCheck(doc): " + p.getUname() + " " + p.getPswd());
+            if (p.getUname().equals(usr) && p.getPswd().equals(pass)) {
+                return p;
             }
         }
 
