@@ -46,6 +46,7 @@ public class EcoSystem {
         this.vehicledirectory = new ArrayList();
         this.techdirectory = new ArrayList();
         this.donordirectory = new ArrayList();
+        this.donorbankdirectory = new ArrayList();
     }
 
     public static EcoSystem getInstance() {
@@ -393,6 +394,46 @@ public class EcoSystem {
                 return;
             }
         }
+    }
+
+    public void generateRequesting(String donateEntity, String handler, String tech, Hospital rec, String doc, String recPat) {
+        Handler h = findHandlerByUname(handler);
+        Technician t = findTechnicianByUname(tech);
+        Doctor d = findDoctorByUserName(doc);
+        Patient p = (Patient) findPatientByUserName(recPat);
+        for (DonateEntity de : donateEntityList) {
+            try {
+                if (de.getId().equals(donateEntity)) {
+                    de.setHandler(h);
+                    de.setTechnician(t);
+                    de.setReceiverEnterprise(rec);
+                    de.setReceiverDoctor(d);
+                    de.setReceiverPatient(p);
+                    return;
+                }
+            } catch (Exception e) {
+
+            }
+        }
+
+    }
+
+    private Handler findHandlerByUname(String handler) {
+        for (Handler d : handlerdirectory) {
+            if (d.getUname().equals(handler)) {
+                return d;
+            }
+        }
+        return null;
+    }
+
+    private Technician findTechnicianByUname(String tech) {
+        for (Technician d : techdirectory) {
+            if (d.getUname().equals(tech)) {
+                return d;
+            }
+        }
+        return null;
     }
 
 }

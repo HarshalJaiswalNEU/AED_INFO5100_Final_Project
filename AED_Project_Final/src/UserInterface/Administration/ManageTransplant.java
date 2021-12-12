@@ -1,38 +1,36 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package UserInterface.DonorBank.LoginPages.DonorAdmin;
+package UserInterface.Administration;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
-import Business.Enterprise.DonorBank.DonorBank;
+import Business.Firebase.FirebaseHelper;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Mayur
+ * @author harshaljaiswal
  */
-public class DonorAdminTransplant extends javax.swing.JPanel {
+public class ManageTransplant extends javax.swing.JPanel {
 
     /**
-     * Creates new form DonorAdminTransplant
+     * Creates new form ManageTransplant
      */
     MainFrameForm mainScreen;
+    FirebaseHelper firebaseHelper;
     private EcoSystem ecoSystem;
     private DB4OUtil dB4OUtil;
-    DonorBank donbank;
-    
-    public DonorAdminTransplant(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, DonorBank donbank) {
+
+    public ManageTransplant(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
-        this.donbank = donbank;
-        populateTable(donbank.getEnterpriseName());
+        populateTable();
     }
 
     /**
@@ -64,99 +62,63 @@ public class DonorAdminTransplant extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1033, Short.MAX_VALUE)
+            .addGap(0, 958, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(81, 81, 81)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(81, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 555, Short.MAX_VALUE)
+            .addGap(0, 628, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(153, 153, 153)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(153, Short.MAX_VALUE)))
+                    .addContainerGap(226, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
- private void populateTable(String name) {
+    private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         model.setRowCount(0);
         System.out.println("populatetable");
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
 
-            if (d.getDonorEnterprise().getEnterpriseName().toLowerCase().equals(name)) {
-                Object[] row = new Object[8];
-                row[0] = d.getType();
-                row[1] = d.getBloodGroup();
-                row[2] = d.getEntityName();
-                row[3] = d.getStatus();
-                try {
-                    row[4] = d.getDonorEnterprise().getEnterpriseName();
-                } catch (Exception e) {
-
-                }
-
-                try {
-                    row[5] = d.getReceiverEnterprise().getEnterpriseName();
-                } catch (Exception e) {
-
-                }
-                try {
-                    row[6] = d.getReceiverPatient().getName();
-                } catch (Exception e) {
-
-                }
-                try {
-                    row[7] = d.getDonorPatient().getName();
-                } catch (Exception e) {
-
-                }
-
-                model.addRow(row);
-            }
+            Object[] row = new Object[8];
+            row[0] = d.getType();
+            row[1] = d.getBloodGroup();
+            row[2] = d.getEntityName();
+            row[3] = d.getStatus();
             try {
-                if (d.getReceiverEnterprise().getEnterpriseName().toLowerCase().equals(name)) {
-                    Object[] row = new Object[8];
-                    row[0] = d.getType();
-                    row[1] = d.getBloodGroup();
-                    row[2] = d.getEntityName();
-                    row[3] = d.getStatus();
-                    try {
-                        row[4] = d.getDonorEnterprise().getEnterpriseName();
-                    } catch (Exception e) {
-
-                    }
-
-                    try {
-                        row[5] = d.getReceiverEnterprise().getEnterpriseName();
-                    } catch (Exception e) {
-
-                    }
-                    try {
-                        row[6] = d.getReceiverPatient().getName();
-                    } catch (Exception e) {
-
-                    }
-                    try {
-                        row[7] = d.getDonorPatient().getName();
-                    } catch (Exception e) {
-
-                    }
-
-                    model.addRow(row);
-                }
+                row[4] = d.getDonorEnterprise().getEnterpriseName();
             } catch (Exception e) {
 
             }
 
+            try {
+                row[5] = d.getReceiverEnterprise().getEnterpriseName();
+            } catch (Exception e) {
+
+            }
+            try {
+                row[6] = d.getReceiverPatient().getName();
+            } catch (Exception e) {
+
+            }
+            try {
+                row[7] = d.getDonorPatient().getName();
+            } catch (Exception e) {
+
+            }
+
+            model.addRow(row);
+
         }
 
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb1;

@@ -11,6 +11,8 @@ import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Patient;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
+import static java.lang.Math.random;
+import java.util.Random;
 
 /**
  *
@@ -185,6 +187,8 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
         
         DonateEntity de = new DonateEntity();
         de.setEntityName(entity.getText().toString());
+        Random rand = new Random();
+        de.setId( String.format("%04d", rand.nextInt(10000)));
         de.setDonorEnterprise(hospital);
         de.setBloodGroup(bg.getText().toString());
         de.setType(type.getText().toString());
