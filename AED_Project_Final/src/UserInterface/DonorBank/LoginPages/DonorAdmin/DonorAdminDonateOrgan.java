@@ -10,7 +10,10 @@ import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.DonorBank.Donor;
 import Business.Enterprise.DonorBank.DonorBank;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -89,6 +92,11 @@ public class DonorAdminDonateOrgan extends javax.swing.JPanel {
 
         btn_save.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btn_save.setText("Save");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
 
         donlist.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
@@ -164,6 +172,25 @@ public class DonorAdminDonateOrgan extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {donlist, txt_entname});
 
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+        
+        DonateEntity de = new DonateEntity();
+        de.setEntityName(txt_entname.getText().toString());
+        de.setDonorEnterprise(donbank);
+        de.setBloodGroup(txt_bldgrp.getText().toString());
+        de.setType(cmb_enttype.getSelectedItem().toString());
+        //de.setDonorDoctor(ecoSystem.findDoctorByUserName(doctorList.getSelectedItem().toString()));
+        de.setDonorPatient(ecoSystem.findPatientByUserName(donlist.getSelectedItem().toString()));
+        de.setStatus(cmb_status.getSelectedItem().toString());
+//        System.out.println("dede: "+de.getDonorDoctor().getName());
+        ecoSystem.addDonateEntity(de);
+        
+        dB4OUtil.storeSystem(ecoSystem);
+        
+        JOptionPane.showMessageDialog(this, "Entity details added.");
+    }//GEN-LAST:event_btn_saveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

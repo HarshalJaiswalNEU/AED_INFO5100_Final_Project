@@ -14,32 +14,20 @@ import java.util.Date;
  */
 public class Handler extends User {
     
-    private String vehicleName;
-    private String vehicleNum;
+    private Vehicle vehicle;
     
-    public Handler(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,String vehicleName,String vehicleNum) {
+    public Handler(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,Vehicle vehicle) {
         super(uname, pswd, id, name, add, gender, telenum, dob);
-        this.vehicleName = vehicleName;
-        this.vehicleNum = vehicleNum;
+        this.vehicle = vehicle;
     }
 
-    public String getVehicleName() {
-        return vehicleName;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setVehicleName(String vehicleName) {
-        this.vehicleName = vehicleName;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
-
-    public String getVehicleNum() {
-        return vehicleNum;
-    }
-
-    public void setVehicleNum(String vehicleNum) {
-        this.vehicleNum = vehicleNum;
-    }
-    
-    
-    
+  
     
 }
