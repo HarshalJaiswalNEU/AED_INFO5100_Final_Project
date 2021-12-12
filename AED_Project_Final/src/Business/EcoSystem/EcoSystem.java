@@ -116,7 +116,6 @@ public class EcoSystem {
         this.techdirectory = techdirectory;
     }
 
-    
     public void addDoctor(Doctor doc) {
         try {
             doctordirectory.add(doc);
@@ -176,7 +175,26 @@ public class EcoSystem {
                 return don;
             }
         }
+        for (Handler don : handlerdirectory) {
+            //System.out.println("LoginCheck(doc): " + don.getUname() + " " + don.getPswd());
+            if (don.getUname().equals(usr) && don.getPswd().equals(pass)) {
+                return don;
+            }
+        }
 
+        for (Technician tech : techdirectory) {
+            //System.out.println("LoginCheck(doc): " + don.getUname() + " " + don.getPswd());
+            if (tech.getUname().equals(usr) && tech.getPswd().equals(pass)) {
+                return tech;
+            }
+        }
+
+        for (Donor don : donordirectory) {
+            //System.out.println("LoginCheck(doc): " + don.getUname() + " " + don.getPswd());
+            if (don.getUname().equals(usr) && don.getPswd().equals(pass)) {
+                return don;
+            }
+        }
         return null;
     }
 
@@ -325,14 +343,56 @@ public class EcoSystem {
     }
 
     public Vehicle getVehicleByNumber(String vecNo) {
-        
-        System.out.println("vec no:"+vecNo.substring(0, vecNo.indexOf("|")) );
-        for (Vehicle v: vehicledirectory){
-            if( v.getVehnum().matches( vecNo.substring(0, vecNo.indexOf("|") ) )){
+
+        System.out.println("vec no:" + vecNo.substring(0, vecNo.indexOf("|")));
+        for (Vehicle v : vehicledirectory) {
+            if (v.getVehnum().matches(vecNo.substring(0, vecNo.indexOf("|")))) {
                 return v;
-                
+
             }
         }
         return null;
     }
+
+    public void deleteDonorBank(String donorBankUName) {
+
+        for (DonorBank n : donorbankdirectory) {
+            System.out.println("donorb " + n.getUsername());
+            if (n.getUsername().equals(donorBankUName)) {
+                System.out.println("found");
+                donorbankdirectory.remove(n);
+                return;
+            }
+        }
+    }
+
+    public void deleteDonor(String donorName) {
+        for (Donor n : donordirectory) {
+            if (n.getUname().equals(donorName)) {
+                donordirectory.remove(n);
+                return;
+            }
+        }
+    }
+
+    public void deleteHandler(String HUname) {
+
+        for (Handler n : handlerdirectory) {
+            if (n.getUname().equals(HUname)) {
+                handlerdirectory.remove(n);
+                return;
+            }
+        }
+    }
+
+    public void deleteVehicle(String vNumber) {
+
+        for (Vehicle n : vehicledirectory) {
+            if (n.getVehnum().equals(vNumber)) {
+                vehicledirectory.remove(n);
+                return;
+            }
+        }
+    }
+
 }
