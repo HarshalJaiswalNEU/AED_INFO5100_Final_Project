@@ -92,6 +92,31 @@ public class EcoSystem {
         this.patientdirectory = patientdirectory;
     }
 
+    public ArrayList<Handler> getHandlerdirectory() {
+        return handlerdirectory;
+    }
+
+    public void setHandlerdirectory(ArrayList<Handler> handlerdirectory) {
+        this.handlerdirectory = handlerdirectory;
+    }
+
+    public ArrayList<Vehicle> getVehicledirectory() {
+        return vehicledirectory;
+    }
+
+    public void setVehicledirectory(ArrayList<Vehicle> vehicledirectory) {
+        this.vehicledirectory = vehicledirectory;
+    }
+
+    public ArrayList<Technician> getTechdirectory() {
+        return techdirectory;
+    }
+
+    public void setTechdirectory(ArrayList<Technician> techdirectory) {
+        this.techdirectory = techdirectory;
+    }
+
+    
     public void addDoctor(Doctor doc) {
         try {
             doctordirectory.add(doc);
@@ -294,6 +319,18 @@ public class EcoSystem {
         for (Patient p : patientdirectory) {
             if (p.getUname().equals(patUname)) {
                 return p;
+            }
+        }
+        return null;
+    }
+
+    public Vehicle getVehicleByNumber(String vecNo) {
+        
+        System.out.println("vec no:"+vecNo.substring(0, vecNo.indexOf("|")) );
+        for (Vehicle v: vehicledirectory){
+            if( v.getVehnum().matches( vecNo.substring(0, vecNo.indexOf("|") ) )){
+                return v;
+                
             }
         }
         return null;

@@ -8,6 +8,7 @@ package UserInterface.Logistics;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Logistics.Handler;
+import Business.Enterprise.Logistics.Vehicle;
 import UserInterface.MainFrameForm;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -33,6 +34,11 @@ public class SignUpHandler extends javax.swing.JPanel {
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
+        
+        for(Vehicle h: ecoSystem.getVehicledirectory()){
+            String s = h.getVehnum()+"| " + h.getVehname()+" | "+ h.getVtype();
+            cmb_vehicle.addItem(s);
+        }
     }
 
     /**
@@ -67,10 +73,8 @@ public class SignUpHandler extends javax.swing.JPanel {
         txt_telenum = new javax.swing.JTextField();
         lbl_dob = new javax.swing.JLabel();
         txt_dob = new javax.swing.JTextField();
-        lbl_vehname = new javax.swing.JLabel();
-        txt_vehname = new javax.swing.JTextField();
         lbl_vehnum = new javax.swing.JLabel();
-        txt_vehnum = new javax.swing.JTextField();
+        cmb_vehicle = new javax.swing.JComboBox<>();
 
         lbl_admintitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_admintitle.setText("Create Handler Profile");
@@ -213,33 +217,10 @@ public class SignUpHandler extends javax.swing.JPanel {
             }
         });
 
-        lbl_vehname.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_vehname.setText("Vehicle Name:");
-
-        txt_vehname.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vehnameActionPerformed(evt);
-            }
-        });
-        txt_vehname.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_vehnameKeyReleased(evt);
-            }
-        });
-
         lbl_vehnum.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_vehnum.setText("Vehicle Number:");
+        lbl_vehnum.setText("Vehicle:");
 
-        txt_vehnum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vehnumActionPerformed(evt);
-            }
-        });
-        txt_vehnum.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_vehnumKeyReleased(evt);
-            }
-        });
+        cmb_vehicle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -296,20 +277,20 @@ public class SignUpHandler extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_vehname)
                             .addComponent(lbl_dob)
                             .addComponent(lbl_vehnum))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vehname, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_vehnum, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cmb_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(405, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtAdd, txtCity});
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_back, btn_signup});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_vehicle, txt_dob});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,13 +339,9 @@ public class SignUpHandler extends javax.swing.JPanel {
                     .addComponent(lbl_dob))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_vehname)
-                    .addComponent(txt_vehname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_vehnum)
-                    .addComponent(txt_vehnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_signup))
@@ -374,6 +351,8 @@ public class SignUpHandler extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAdd, txtCity});
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_back, btn_signup});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_vehicle, txt_dob});
 
     }// </editor-fold>//GEN-END:initComponents
 
@@ -485,8 +464,8 @@ public class SignUpHandler extends javax.swing.JPanel {
         //uname, pswd, id, name, add, gender, telenum, dob
         //(txtFullName.getText(), txtNo.getText(), address, txtUsrName.getText(), txtPass.getText());
 
-        Handler handler = new Handler(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address,cmb_gender.getSelectedItem().toString(), txt_telenum.getText(), new Date(), txt_vehname.getText(),txt_vehnum.getText());
-
+        Handler handler = new Handler(txtUsrName.getText(), txtPass.getText(), "idid", txtFullName.getText(), address,cmb_gender.getSelectedItem().toString(), txt_telenum.getText(), new Date(),ecoSystem.getVehicleByNumber(cmb_vehicle.getSelectedItem().toString()));
+        System.out.println("handler " + handler.getVehicle().getVehname());
         ecoSystem.addHandler(handler);
         dB4OUtil.storeSystem(ecoSystem);
 
@@ -532,27 +511,12 @@ public class SignUpHandler extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_dobKeyReleased
 
-    private void txt_vehnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vehnameActionPerformed
-
-    private void txt_vehnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vehnameKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vehnameKeyReleased
-
-    private void txt_vehnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehnumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vehnumActionPerformed
-
-    private void txt_vehnumKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vehnumKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vehnumKeyReleased
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_signup;
     private javax.swing.JComboBox<String> cmb_gender;
+    private javax.swing.JComboBox<String> cmb_vehicle;
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_admintitle;
     private javax.swing.JLabel lbl_dob;
@@ -561,7 +525,6 @@ public class SignUpHandler extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_pswd;
     private javax.swing.JLabel lbl_telenum;
     private javax.swing.JLabel lbl_uname;
-    private javax.swing.JLabel lbl_vehname;
     private javax.swing.JLabel lbl_vehnum;
     private javax.swing.JTextField txtAdd;
     private javax.swing.JTextField txtCity;
@@ -575,7 +538,5 @@ public class SignUpHandler extends javax.swing.JPanel {
     private javax.swing.JTextField txt_dob;
     private javax.swing.JLabel txt_state;
     private javax.swing.JTextField txt_telenum;
-    private javax.swing.JTextField txt_vehname;
-    private javax.swing.JTextField txt_vehnum;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,8 @@ package UserInterface.Hospital.LoginPages.Admin;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Logistics.Handler;
+import Business.Enterprise.Logistics.Vehicle;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
 import javax.swing.table.DefaultTableModel;
@@ -33,6 +35,7 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         this.hospital = h;
 
         populateTable();
+        populateVehicleTable();
     }
 
     /**
@@ -50,6 +53,9 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tb2 = new javax.swing.JTable();
 
         jLabel1.setText("Search and Receive organ");
 
@@ -75,25 +81,50 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        tb2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Handler Name", "Vehicle Name", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tb2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(421, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(447, 447, 447))
             .addGroup(layout.createSequentialGroup()
                 .addGap(236, 236, 236)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(67, 67, 67)
+                            .addComponent(jButton1))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton2)
+                            .addGap(8, 8, 8)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,13 +132,17 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addGap(58, 58, 58)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,6 +150,10 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         // TODO add your handling code here:
         populateTable(name.getText().toLowerCase().toString());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
@@ -128,6 +167,22 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             row[1] = d.getBloodGroup();
             row[2] = d.getEntityName();
             row[3] = d.getStatus();
+            model.addRow(row);
+
+        }
+
+    }
+    
+     private void populateVehicleTable() {
+        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable"+ecoSystem.getDonateEntityList().toString());
+        for (Handler h : ecoSystem.getHandlerdirectory()) {
+
+            Object[] row = new Object[5];
+            row[0] = h.getName();
+            row[1] = h.getVehicle().getVehname();
+            row[2] = h.getVehicle().getVtype();
             model.addRow(row);
 
         }
@@ -155,10 +210,13 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField name;
     private javax.swing.JTable tb1;
+    private javax.swing.JTable tb2;
     // End of variables declaration//GEN-END:variables
 }
