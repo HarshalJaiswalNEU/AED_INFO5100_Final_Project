@@ -6,15 +6,9 @@ package UserInterface.Administration;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
-import Business.Enterprise.Hospital.Doctor;
-import Business.Enterprise.Hospital.Hospital;
-import Business.Enterprise.Hospital.Nurse;
-import Business.Enterprise.Hospital.Patient;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.MainFrameForm;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class MainAdministrationPage extends javax.swing.JPanel {
 
     /**
-     * Creates new form MainAdministrationPage
+     * Creates new form AdministrationLoginPage
      */
     MainFrameForm mainScreen;
     FirebaseHelper firebaseHelper;
@@ -35,7 +29,7 @@ public class MainAdministrationPage extends javax.swing.JPanel {
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
-        populateTable();
+
     }
 
     /**
@@ -47,214 +41,118 @@ public class MainAdministrationPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tb2 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tb3 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tb4 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_Hosptitle = new javax.swing.JLabel();
+        lbl_username = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lbl_pswd = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        btn_login = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("Administration");
+        lbl_Hosptitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_Hosptitle.setText("Administration");
 
-        tb1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "hospital name", "user id", "pass", "reg", "add"
-            }
-        ));
-        jScrollPane1.setViewportView(tb1);
+        lbl_username.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_username.setText("Username:");
 
-        tb2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Doc name", "user id", "pass", "reg", "add"
-            }
-        ));
-        jScrollPane2.setViewportView(tb2);
+        lbl_pswd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_pswd.setText("Password:");
 
-        jButton1.setText("check doctors");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_login.setText("Login");
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_loginActionPerformed(evt);
             }
         });
 
-        tb3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Doc name", "user id", "pass", "reg", "add"
-            }
-        ));
-        jScrollPane3.setViewportView(tb3);
-
-        tb4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Doc name", "user id", "pass", "reg", "add"
-            }
-        ));
-        jScrollPane4.setViewportView(tb4);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(404, 404, 404)
+                .addComponent(lbl_Hosptitle, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(290, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(353, 353, 353)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_username)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_pswd)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_login, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(354, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(lbl_Hosptitle)
+                .addContainerGap(579, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(255, 255, 255)
+                    .addComponent(lbl_username)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(lbl_pswd)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(37, 37, 37)
+                    .addComponent(btn_login)
+                    .addContainerGap(193, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(382, 382, 382)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(208, 208, 208)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(246, Short.MAX_VALUE))
+            .addGap(0, 986, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jLabel1)
-                .addGap(67, 67, 67)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGap(0, 638, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        int selectedRow = tb1.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
-        String hospitalName = model.getValueAt(selectedRow, 0).toString();
-        System.out.println(" hospitalDoctorSeach: " + hospitalName);
-        Hospital h = ecoSystem.getHospitaldirectory().findHospital(hospitalName);
-//        System.out.println(" "+h.getDoctordirectory().get(0).getName());
-        populateDoctorTable(ecoSystem.getDoctordirectory(), hospitalName);
-        populatePatientTable(ecoSystem.getPatientdirectory(), hospitalName);
-        populateNurseTable(ecoSystem.getNursedirectory(), hospitalName);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
-        model.setRowCount(0);
-
-        for (Hospital h : ecoSystem.getHospitaldirectory().getHospitalList()) {
-
-            Object[] row = new Object[5];
-            row[0] = h.getEnterpriseName();
-            row[1] = h.getUsername();
-            row[2] = h.getPassword();
-            row[3] = h.getRegisteryNumber();
-            row[4] = h.getAddress();
-
-            model.addRow(row);
-        }
-
-    }
-
-    private void populateDoctorTable(ArrayList<Doctor> doctors, String hosp) {
-        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
-        model.setRowCount(0);
-
-        for (Doctor d : doctors) {
+        if (txtUsername.getText().toString().equals("a") && txtPassword.getText().toString().equals("a")) {
+            AdministrationSplitPage ap = new AdministrationSplitPage(mainScreen, dB4OUtil, ecoSystem);
             
-            Object[] row = new Object[5];
-            if (d.getHospname().equals(hosp)) {
-
-                row[0] = d.getName();
-                row[1] = d.getUname();
-            }
-
-            model.addRow(row);
+            mainScreen.setContentPane(ap);
+            mainScreen.invalidate();
+            mainScreen.validate();
+            return;
+        } else {
+            JOptionPane.showMessageDialog(this, "Incorrect credential");
         }
 
-    }
 
-    private void populateNurseTable(ArrayList<Nurse> nurse, String hosp) {
-        DefaultTableModel model = (DefaultTableModel) tb3.getModel();
-        model.setRowCount(0);
+    }//GEN-LAST:event_btn_loginActionPerformed
 
-        for (Nurse d : nurse) {
 
-            Object[] row = new Object[5];
-            if (d.getHospname().equals(hosp)) {
-                row[0] = d.getName();
-                row[1] = d.getUname();
-            }
-
-            model.addRow(row);
-        }
-
-    }
-
-    private void populatePatientTable(ArrayList<Patient> patient, String hosp) {
-        DefaultTableModel model = (DefaultTableModel) tb4.getModel();
-        model.setRowCount(0);
-
-        for (Patient d : patient) {
-
-            Object[] row = new Object[5];
-            if (d.getHospname().equals(hosp)) {
-                row[0] = d.getName();
-                row[1] = d.getUname();
-            }
-
-            model.addRow(row);
-        }
-
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable tb1;
-    private javax.swing.JTable tb2;
-    private javax.swing.JTable tb3;
-    private javax.swing.JTable tb4;
+    private javax.swing.JButton btn_login;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_Hosptitle;
+    private javax.swing.JLabel lbl_pswd;
+    private javax.swing.JLabel lbl_username;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
