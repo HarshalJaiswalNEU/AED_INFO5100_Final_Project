@@ -57,7 +57,7 @@ public class AdminTransplants extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "", "Patient Name", "Donar name"
+                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donar name"
             }
         ));
         jScrollPane1.setViewportView(tb1);
@@ -96,17 +96,69 @@ public class AdminTransplants extends javax.swing.JPanel {
         System.out.println("populatetable");
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
 
-            if (d.getDonorEnterprise().getEnterpriseName().toLowerCase().contains(name) || d.getReceiverEnterprise().getEnterpriseName().toLowerCase().contains(name)) {
+            if (d.getDonorEnterprise().getEnterpriseName().toLowerCase().equals(name)) {
                 Object[] row = new Object[8];
                 row[0] = d.getType();
                 row[1] = d.getBloodGroup();
                 row[2] = d.getEntityName();
                 row[3] = d.getStatus();
-                row[4] = d.getDonorEnterprise().getEnterpriseName();
-                row[5] = "null";//d.getReceiverEnterprise().getEnterpriseName();
-//                row[6] = d.getReceiverPatient().getName();
-//                row[7] = d.getDonorPatient().getName();
+                try {
+                    row[4] = d.getDonorEnterprise().getEnterpriseName();
+                } catch (Exception e) {
+
+                }
+
+                try {
+                    row[5] = d.getReceiverEnterprise().getEnterpriseName();
+                } catch (Exception e) {
+
+                }
+                try {
+                    row[6] = d.getReceiverPatient().getName();
+                } catch (Exception e) {
+
+                }
+                try {
+                    row[7] = d.getDonorPatient().getName();
+                } catch (Exception e) {
+
+                }
+
                 model.addRow(row);
+            }
+            try {
+                if (d.getReceiverEnterprise().getEnterpriseName().toLowerCase().equals(name)) {
+                    Object[] row = new Object[8];
+                    row[0] = d.getType();
+                    row[1] = d.getBloodGroup();
+                    row[2] = d.getEntityName();
+                    row[3] = d.getStatus();
+                    try {
+                        row[4] = d.getDonorEnterprise().getEnterpriseName();
+                    } catch (Exception e) {
+
+                    }
+
+                    try {
+                        row[5] = d.getReceiverEnterprise().getEnterpriseName();
+                    } catch (Exception e) {
+
+                    }
+                    try {
+                        row[6] = d.getReceiverPatient().getName();
+                    } catch (Exception e) {
+
+                    }
+                    try {
+                        row[7] = d.getDonorPatient().getName();
+                    } catch (Exception e) {
+
+                    }
+
+                    model.addRow(row);
+                }
+            } catch (Exception e) {
+
             }
 
         }

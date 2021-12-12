@@ -6,11 +6,15 @@ package UserInterface.Hospital.LoginPages.Admin;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
+import Business.Enterprise.Lab.Technician;
 import Business.Enterprise.Logistics.Handler;
 import Business.Enterprise.Logistics.Vehicle;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +40,21 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
 
         populateTable();
         populateVehicleTable();
+        populateLabTable();
+        
+        for (Doctor d : ecoSystem.getDoctordirectory()) {
+
+            if (d.getHospname().equals(hospital.getEnterpriseName())) {
+                doc.addItem(d.getUname());
+            }
+
+        }
+        
+        for(Patient pa : ecoSystem.getPatientdirectory() ){
+            if( pa.getHospname().equals(hospital.getEnterpriseName())){
+                recPat.addItem(pa.getUname());
+            }
+        }
     }
 
     /**
@@ -50,36 +69,36 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tb2 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        name = new javax.swing.JTextField();
+        blood = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tb3 = new javax.swing.JTable();
+        doc = new javax.swing.JComboBox<>();
+        recPat = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Search and Receive organ");
 
         tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Type", "Blood group", "Entity name", "Status"
+                "Type", "Blood group", "Entity name", "Status", "id"
             }
         ));
         jScrollPane1.setViewportView(tb1);
-
-        jLabel2.setText("Name:");
-
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Generate request");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +120,92 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tb2);
 
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Blood");
+
+        jButton3.setText("Search");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Dual Search");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Name:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(blood, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton4)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(blood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tb3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "lab Name", "Vehicle Name", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tb3);
+
+        doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        recPat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,18 +217,18 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(236, 236, 236)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(67, 67, 67)
-                            .addComponent(jButton1))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(recPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2)
                             .addGap(8, 8, 8)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -133,33 +238,64 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(58, 58, 58)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jButton2)
-                .addContainerGap(154, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(doc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(68, 68, 68))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        populateTable(name.getText().toLowerCase().toString());
+        populateTableName(name.getText().toLowerCase().toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int selectedRow1 = tb1.getSelectedRow();
+        int selectedRow2 = tb2.getSelectedRow();
+        int selectedRow3 = tb3.getSelectedRow();
         
+        if (selectedRow1 < 0 || selectedRow2 < 0 || selectedRow3 < 0 ) {
+            JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
+            return;
+        }
+        DefaultTableModel model1 = (DefaultTableModel) tb1.getModel();
+        String donateEntity = model1.getValueAt(selectedRow1, 4 ).toString();
+        
+        DefaultTableModel model2 = (DefaultTableModel) tb2.getModel();
+        String handler = model2.getValueAt(selectedRow2, 0 ).toString();
+        
+        DefaultTableModel model3 = (DefaultTableModel) tb3.getModel();
+        String tech = model3.getValueAt(selectedRow3, 0 ).toString();
+        System.out.println(" "+donateEntity+ " "+handler + " "+tech);
+        
+        ecoSystem.generateRequesting(donateEntity, handler, tech, hospital, doc.getSelectedItem().toString(), recPat.getSelectedItem().toString() );
+        dB4OUtil.storeSystem(ecoSystem);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        populateTableBlood(blood.getText().toLowerCase().toString());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        populateTableDual(blood.getText().toLowerCase().toString(), name.getText().toLowerCase().toString());
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         model.setRowCount(0);
-        System.out.println("populatetable"+ecoSystem.getDonateEntityList().toString());
+        System.out.println("populatetable" + ecoSystem.getDonateEntityList().toString());
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
             System.out.println("populatetable " + d.getEntityName());
 
@@ -168,20 +304,41 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             row[1] = d.getBloodGroup();
             row[2] = d.getEntityName();
             row[3] = d.getStatus();
+            row[4] =  d.getId();
             model.addRow(row);
 
         }
 
     }
-    
-     private void populateVehicleTable() {
+
+    private void populateTableDual(String blood,String name ) {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (DonateEntity d : ecoSystem.getDonateEntityList()) {
+
+            if (d.getBloodGroup().toLowerCase().contains(blood) && d.getEntityName().toLowerCase().contains(name)) {
+                Object[] row = new Object[5];
+                row[0] = d.getType();
+                row[1] = d.getBloodGroup();
+                row[2] = d.getEntityName();
+                row[3] = d.getStatus();
+                row[4] =  d.getId();
+                model.addRow(row);
+            }
+
+        }
+
+    }
+
+    private void populateVehicleTable() {
         DefaultTableModel model = (DefaultTableModel) tb2.getModel();
         model.setRowCount(0);
-        System.out.println("populatetable"+ecoSystem.getDonateEntityList().toString());
+        System.out.println("populatetable" + ecoSystem.getDonateEntityList().toString());
         for (Handler h : ecoSystem.getHandlerdirectory()) {
 
             Object[] row = new Object[5];
-            row[0] = h.getName();
+            row[0] = h.getUname();
             row[1] = h.getVehicle().getVehname();
             row[2] = h.getVehicle().getVtype();
             model.addRow(row);
@@ -189,8 +346,45 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         }
 
     }
+    
+    private void populateLabTable() {
+        DefaultTableModel model = (DefaultTableModel) tb3.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable" + ecoSystem.getDonateEntityList().toString());
+        for (Technician h : ecoSystem.getTechdirectory()) {
 
-    private void populateTable(String name) {
+            Object[] row = new Object[5];
+            row[0] = h.getUname();
+            row[1] = h.getLabname();
+            
+            model.addRow(row);
+
+        }
+
+    }
+
+
+    private void populateTableBlood(String name) {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (DonateEntity d : ecoSystem.getDonateEntityList()) {
+
+            if (d.getBloodGroup().toLowerCase().contains(name)) {
+                Object[] row = new Object[5];
+                row[0] = d.getType();
+                row[1] = d.getBloodGroup();
+                row[2] = d.getEntityName();
+                row[3] = d.getStatus();
+                row[4] =  d.getId();
+                model.addRow(row);
+            }
+
+        }
+
+    }
+
+    private void populateTableName(String name) {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         model.setRowCount(0);
         System.out.println("populatetable");
@@ -202,6 +396,7 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
                 row[1] = d.getBloodGroup();
                 row[2] = d.getEntityName();
                 row[3] = d.getStatus();
+                row[4] =  d.getId();
                 model.addRow(row);
             }
 
@@ -210,14 +405,23 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField blood;
+    private javax.swing.JComboBox<String> doc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField name;
+    private javax.swing.JComboBox<String> recPat;
     private javax.swing.JTable tb1;
     private javax.swing.JTable tb2;
+    private javax.swing.JTable tb3;
     // End of variables declaration//GEN-END:variables
 }

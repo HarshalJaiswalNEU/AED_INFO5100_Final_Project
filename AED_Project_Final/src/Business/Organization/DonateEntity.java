@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -8,6 +8,8 @@ import Business.Enterprise.Enterprise;
 import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import Business.Enterprise.Lab.Technician;
+import Business.Enterprise.Logistics.Handler;
 
 /**
  *
@@ -15,6 +17,7 @@ import Business.Enterprise.Hospital.Patient;
  */
 public class DonateEntity {
 
+    public String id;
     public Doctor donorDoctor;
     public Doctor receiverDoctor;
     public Patient receiverPatient;
@@ -26,9 +29,19 @@ public class DonateEntity {
     public String bloodGroup;
     public String entityName;
     public String Status;
+    public Handler Handler;
+    public Technician technician;
 
     public DonateEntity() {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Doctor getDonorDoctor() {
@@ -118,5 +131,22 @@ public class DonateEntity {
     public void setStatus(String Status) {
         this.Status = Status;
     }
+
+    public Handler getHandler() {
+        return Handler;
+    }
+
+    public void setHandler(Handler Handler) {
+        this.Handler = Handler;
+    }
+
+    public Technician getTechnician() {
+        return technician;
+    }
+
+    public void setTechnician(Technician technician) {
+        this.technician = technician;
+    }
+    
 
 }

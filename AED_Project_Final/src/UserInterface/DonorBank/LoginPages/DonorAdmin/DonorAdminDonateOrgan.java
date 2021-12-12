@@ -9,9 +9,9 @@ import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.DonorBank.Donor;
 import Business.Enterprise.DonorBank.DonorBank;
-import Business.Enterprise.Hospital.Hospital;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 
@@ -179,6 +179,8 @@ public class DonorAdminDonateOrgan extends javax.swing.JPanel {
         DonateEntity de = new DonateEntity();
         de.setEntityName(txt_entname.getText().toString());
         de.setDonorEnterprise(donbank);
+        Random rand = new Random();
+        de.setId( String.format("%04d", rand.nextInt(10000)));
         de.setBloodGroup(txt_bldgrp.getText().toString());
         de.setType(cmb_enttype.getSelectedItem().toString());
         //de.setDonorDoctor(ecoSystem.findDoctorByUserName(doctorList.getSelectedItem().toString()));
