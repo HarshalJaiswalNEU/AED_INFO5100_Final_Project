@@ -6,7 +6,10 @@ package UserInterface.Lab;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Lab.Technician;
+import UserInterface.Lab.LoginPages.TechLogin;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -147,60 +150,19 @@ public class MainLabPage extends javax.swing.JPanel {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
 
-        //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
-            //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
-            //            if (c == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                CustomerMainPage custmp = new CustomerMainPage(system, dB4OUtil, c);
-                //                this.setContentPane(custmp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
-        //        if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-            //            Restaurant r = system.loginResaturant(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                RestaurantMainPage restmp = new RestaurantMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(restmp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
-        //
-        //        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-            //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(delimp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
-        //
-        //        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-            //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-                //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-                //                this.setContentPane(adminpg);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            } else {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            }
-            //        }
+       if (cmb_Role.getSelectedItem().toString() == "Technician") {
+            Technician ho = (Technician) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (ho == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                TechLogin ap = new TechLogin(mainScreen, dB4OUtil, ecoSystem, ho);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
