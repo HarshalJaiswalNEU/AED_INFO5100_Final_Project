@@ -7,11 +7,13 @@ package UserInterface.Hospital.LoginPages;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Hospital;
+import Business.Enterprise.Hospital.Patient;
 import UserInterface.Hospital.LoginPages.Admin.AdminDoctor;
 import UserInterface.Hospital.LoginPages.Admin.AdminDonateOrgan;
 import UserInterface.Hospital.LoginPages.Admin.AdminNurses;
 import UserInterface.Hospital.LoginPages.Admin.AdminPatient;
 import UserInterface.Hospital.LoginPages.Admin.AdminReceiveOrgan;
+import UserInterface.Hospital.LoginPages.Admin.AdminTransplants;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -29,13 +31,17 @@ public class AdminLogin extends javax.swing.JPanel {
     private EcoSystem ecoSystem;
     private DB4OUtil dB4OUtil;
     Hospital hospital;
-
+    
     public AdminLogin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Hospital h) {
         initComponents();
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
         this.hospital = h;
+    }
+
+    public AdminLogin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Patient pa) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -218,6 +224,8 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        AdminTransplants at = new AdminTransplants(mainScreen, dB4OUtil, ecoSystem, hospital);
+        jSplitPane1.setRightComponent(at);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
