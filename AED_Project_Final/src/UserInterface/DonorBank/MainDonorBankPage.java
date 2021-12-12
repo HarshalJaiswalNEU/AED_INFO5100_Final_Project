@@ -6,12 +6,15 @@ package UserInterface.DonorBank;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.DonorBank.DonorBank;
 import Business.Firebase.FirebaseHelper;
+import UserInterface.DonorBank.LoginPages.DonorBankAdminLogin;
 import UserInterface.MainFrameForm;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author harshaljaiswal
+ * @author Mayur
  */
 public class MainDonorBankPage extends javax.swing.JPanel {
 
@@ -156,6 +159,19 @@ public class MainDonorBankPage extends javax.swing.JPanel {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
+        
+        if (cmb_Role.getSelectedItem().toString() == "Donor Admin") {
+            DonorBank donbank = (DonorBank) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if(donbank == null){
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            }else{
+                DonorBankAdminLogin ap = new DonorBankAdminLogin(mainScreen, dB4OUtil, ecoSystem, donbank);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+        }
 
         //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
         //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());

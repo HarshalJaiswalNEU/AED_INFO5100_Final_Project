@@ -39,8 +39,7 @@ public class MainLabPage extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        lbl_role = new javax.swing.JLabel();
         cmb_Role = new javax.swing.JComboBox<>();
         lbl_username = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
@@ -48,10 +47,12 @@ public class MainLabPage extends javax.swing.JPanel {
         txtPassword = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
         btnSignin = new javax.swing.JButton();
-        lbl_role = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("LAB");
+
+        lbl_role.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_role.setText("Role:");
 
         cmb_Role.setEditable(true);
         cmb_Role.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -84,36 +85,36 @@ public class MainLabPage extends javax.swing.JPanel {
             }
         });
 
-        lbl_role.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_role.setText("Role:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(353, 353, 353)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(144, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_role)
                     .addComponent(lbl_username)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_pswd)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(btn_login)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnSignin))
                         .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addGap(1117, 1117, 1117))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(530, 530, 530)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSignin, btn_login});
-
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(192, 192, 192)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel1)
+                .addGap(59, 59, 59)
                 .addComponent(lbl_role)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,97 +127,25 @@ public class MainLabPage extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login)
                     .addComponent(btnSignin))
-                .addContainerGap(221, Short.MAX_VALUE))
-        );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSignin, btn_login});
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 904, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(422, 422, 422)
-                .addComponent(jLabel1)
-                .addContainerGap(450, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jLabel1)
-                .addContainerGap(518, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_RoleActionPerformed
         // TODO add your handling code here:
-//        System.out.println(cmb_Role.getSelectedItem().toString());
-//        if (cmb_Role.getSelectedItem().toString() == "Admin") {
-//            btnSignin.setEnabled(false);
-//        } else {
-//            btnSignin.setEnabled(true);
-//        }
+        System.out.println(cmb_Role.getSelectedItem().toString());
+        if (cmb_Role.getSelectedItem().toString() == "Admin") {
+            btnSignin.setEnabled(false);
+        } else {
+            btnSignin.setEnabled(true);
+        }
     }//GEN-LAST:event_cmb_RoleActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-//        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-//            Hospital ho = (Hospital) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
-//            if(ho == null){
-//                JOptionPane.showMessageDialog(this, "Incorrect credential");
-//            }else{
-//                AdminLogin ap = new AdminLogin(mainScreen, dB4OUtil, ecoSystem, ho);
-//                mainScreen.setContentPane(ap);
-//                mainScreen.invalidate();
-//                mainScreen.validate();
-//                return;
-           // }
-
-            //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-                //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-                //                this.setContentPane(adminpg);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            } else {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            }
-       // }
 
         //        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
             //            Customer c = system.loginCustomer(txtUsername.getText(), txtPassword.getText());
@@ -261,6 +190,17 @@ public class MainLabPage extends javax.swing.JPanel {
             //
             //        }
         //
+        //        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
+            //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
+                //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
+                //                this.setContentPane(adminpg);
+                //                this.invalidate();
+                //                this.validate();
+                //                return;
+                //            } else {
+                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+                //            }
+            //        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
@@ -268,58 +208,16 @@ public class MainLabPage extends javax.swing.JPanel {
 
         if (cmb_Role.getSelectedItem().toString() == "Technician") {
 
-            SignUpLab lab = new SignUpLab(mainScreen, dB4OUtil, ecoSystem);
-            mainScreen.setContentPane(lab);
+            SignUpLab signlab = new SignUpLab(mainScreen, dB4OUtil, ecoSystem);
+            //
+            //            //suc.setVisible(true);
+            mainScreen.setContentPane(signlab);
+            ////            //             this.add(s);
+            ////
             mainScreen.invalidate();
             mainScreen.validate();
 
-            //            this.setContentPane(docsign);
-            //            this.invalidate();
-            //            this.validate();
-            //return;
-
         }
-//        if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-//
-//            //            this.setContentPane(nursesign);
-//            //            this.invalidate();
-//            //            this.validate();
-//            SignUpNurse n = new SignUpNurse(mainScreen, dB4OUtil, ecoSystem);
-//
-//            //suc.setVisible(true);
-//            mainScreen.setContentPane(n);
-//            //             this.add(s);
-//
-//            mainScreen.invalidate();
-//            mainScreen.validate();
-//
-//        }
-//
-//        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-//
-//            SignUpPatient signpat = new SignUpPatient(mainScreen, dB4OUtil, ecoSystem);
-//
-//            //suc.setVisible(true);
-//            mainScreen.setContentPane(signpat);
-//            //             this.add(s);
-//
-//            mainScreen.invalidate();
-//            mainScreen.validate();
-//
-//        }
-//
-//        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-//            //System.out.println("Hospital");
-//            SignUpHospitalAdmin s = new SignUpHospitalAdmin(mainScreen, dB4OUtil, ecoSystem);
-//
-//            //suc.setVisible(true);
-//            mainScreen.setContentPane(s);
-//            //             this.add(s);
-//
-//            mainScreen.invalidate();
-//            mainScreen.validate();
-//
-//        }
     }//GEN-LAST:event_btnSigninActionPerformed
 
 
@@ -328,8 +226,6 @@ public class MainLabPage extends javax.swing.JPanel {
     private javax.swing.JButton btn_login;
     private javax.swing.JComboBox<String> cmb_Role;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbl_pswd;
     private javax.swing.JLabel lbl_role;
     private javax.swing.JLabel lbl_username;
