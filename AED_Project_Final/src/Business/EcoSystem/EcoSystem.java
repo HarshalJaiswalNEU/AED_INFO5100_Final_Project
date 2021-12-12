@@ -11,9 +11,11 @@ import Business.Enterprise.Hospital.Doctor;
 import Business.Enterprise.Hospital.Hospital;
 import Business.Enterprise.Hospital.Nurse;
 import Business.Enterprise.Hospital.Patient;
+import Business.Enterprise.Lab.Technician;
 import Business.Enterprise.Logistics.Handler;
 import Business.Enterprise.Logistics.Vehicle;
 import Business.Organization.DonateEntity;
+import Business.Organization.User;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +34,7 @@ public class EcoSystem {
     private ArrayList<DonateEntity> donateEntityList;
     private ArrayList<Handler> handlerdirectory;
     private ArrayList<Vehicle> vehicledirectory;
+    private ArrayList<Technician> techdirectory;
 
     public EcoSystem() {
         hospitaldirectory = new HospitalDirectory();
@@ -41,6 +44,8 @@ public class EcoSystem {
         this.donateEntityList = new ArrayList();
         this.handlerdirectory = new ArrayList();
         this.vehicledirectory = new ArrayList();
+        this.techdirectory = new ArrayList();
+        this.donordirectory = new ArrayList();
     }
 
     public static EcoSystem getInstance() {
@@ -140,6 +145,12 @@ public class EcoSystem {
                 return ho;
             }
         }
+        for (DonorBank don : donorbankdirectory) {
+            //System.out.println("LoginCheck(doc): " + don.getUname() + " " + don.getPswd());
+            if (don.getUsername().equals(usr) && don.getPassword().equals(pass)) {
+                return don;
+            }
+        }
 
         return null;
     }
@@ -172,15 +183,13 @@ public class EcoSystem {
     }
 
     public void addDonateEntity(DonateEntity de) {
-        System.out.println("addDonateEntity()");
-        donateEntityList.add(de);
-//        try {
-//           
-//        } catch (Exception e) {
-//            this.donateEntityList = new ArrayList();
-//            donateEntityList.add(de);
-//            e.printStackTrace();
-//        }
+        try {
+            donateEntityList.add(de);
+
+        } catch (Exception e) {
+            this.donateEntityList = new ArrayList();
+            donateEntityList.add(de);
+        }
     }
 
     public void addDonor(Donor donor) {
@@ -213,7 +222,13 @@ public class EcoSystem {
     }
 
     public ArrayList<Donor> getDonordirectory() {
-        return donordirectory;
+        try {
+            return donordirectory;
+        } catch (Exception e) {
+            this.donordirectory = new ArrayList();
+            return donordirectory;
+        }
+
     }
 
     public void setDonordirectory(ArrayList<Donor> donordirectory) {
@@ -254,6 +269,34 @@ public class EcoSystem {
             vehicledirectory.add(vehicle);
 
         }
+    }
+
+    public void addTech(Technician tech) {
+        try {
+            techdirectory.add(tech);
+        } catch (Exception e) {
+            this.techdirectory = new ArrayList();
+            techdirectory.add(tech);
+
+        }
+    }
+
+    public void deleteDonorBYuserName(String doctorUName) {
+        for (Donor n : donordirectory) {
+            if (n.getUname().equals(doctorUName)) {
+                donordirectory.remove(n);
+                return;
+            }
+        }
+    }
+
+    public User findPatientByUserName(String patUname) {
+        for (Patient p : patientdirectory) {
+            if (p.getUname().equals(patUname)) {
+                return p;
+            }
+        }
+        return null;
     }
 
 }
