@@ -13,6 +13,7 @@ import UserInterface.Hospital.LoginPages.Admin.AdminDonateOrgan;
 import UserInterface.Hospital.LoginPages.Admin.AdminNurses;
 import UserInterface.Hospital.LoginPages.Admin.AdminPatient;
 import UserInterface.Hospital.LoginPages.Admin.AdminReceiveOrgan;
+import UserInterface.Hospital.LoginPages.Admin.AdminTransplants;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -223,6 +224,8 @@ public class AdminLogin extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        AdminTransplants at = new AdminTransplants(mainScreen, dB4OUtil, ecoSystem, hospital);
+        jSplitPane1.setRightComponent(at);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
