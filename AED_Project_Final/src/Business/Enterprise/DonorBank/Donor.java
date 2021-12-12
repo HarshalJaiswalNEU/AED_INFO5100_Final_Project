@@ -13,9 +13,18 @@ import java.util.Date;
  */
 public class Donor extends User {
 
-
-    public Donor(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob) {
+    private String dbname;
+    public Donor(String uname, String pswd, String id, String name, String add, String gender, String telenum, Date dob,String dbname) {
         super(uname, pswd, id, name, add, gender, telenum, dob);
+        this.dbname = dbname;
+    }
+
+    public String getDbname() {
+        return dbname;
+    }
+
+    public void setDbname(String dbname) {
+        this.dbname = dbname;
     }
 
     
