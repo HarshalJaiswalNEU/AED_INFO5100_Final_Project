@@ -119,7 +119,7 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         model.setRowCount(0);
-        System.out.println("populatetable");
+        System.out.println("populatetable"+ecoSystem.getDonateEntityList().toString());
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
             System.out.println("populatetable " + d.getEntityName());
 

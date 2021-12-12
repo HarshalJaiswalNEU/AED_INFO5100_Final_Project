@@ -189,10 +189,14 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
         de.setBloodGroup(bg.getText().toString());
         de.setType(type.getText().toString());
         de.setDonorDoctor(ecoSystem.findDoctorByUserName(doctorList.getSelectedItem().toString()));
+        de.setDonorPatient(ecoSystem.findPatientByUserName(patList.getSelectedItem().toString()));
         de.setStatus("avaliable");
 //        System.out.println("dede: "+de.getDonorDoctor().getName());
         ecoSystem.addDonateEntity(de);
+        
         dB4OUtil.storeSystem(ecoSystem);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
