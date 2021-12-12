@@ -6,9 +6,11 @@ package UserInterface.DonorBank;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.DonorBank.Donor;
 import Business.Enterprise.DonorBank.DonorBank;
 import Business.Firebase.FirebaseHelper;
 import UserInterface.DonorBank.LoginPages.DonorBankAdminLogin;
+import UserInterface.DonorBank.LoginPages.DonorLogin;
 import UserInterface.MainFrameForm;
 import javax.swing.JOptionPane;
 
@@ -166,6 +168,19 @@ public class MainDonorBankPage extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Incorrect credential");
             }else{
                 DonorBankAdminLogin ap = new DonorBankAdminLogin(mainScreen, dB4OUtil, ecoSystem, donbank);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+        }
+        
+        if (cmb_Role.getSelectedItem().toString() == "Donor") {
+            Donor don = (Donor) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if(don == null){
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            }else{
+                DonorLogin ap = new DonorLogin(mainScreen, dB4OUtil, ecoSystem, don);
                 mainScreen.setContentPane(ap);
                 mainScreen.invalidate();
                 mainScreen.validate();

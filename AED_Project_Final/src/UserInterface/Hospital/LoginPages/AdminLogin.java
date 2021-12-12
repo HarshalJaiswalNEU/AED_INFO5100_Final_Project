@@ -40,9 +40,6 @@ public class AdminLogin extends javax.swing.JPanel {
         this.hospital = h;
     }
 
-    public AdminLogin(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem, Patient pa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.

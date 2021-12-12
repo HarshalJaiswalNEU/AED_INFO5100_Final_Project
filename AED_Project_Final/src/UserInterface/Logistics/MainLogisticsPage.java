@@ -6,26 +6,27 @@ package UserInterface.Logistics;
 
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
+import Business.Enterprise.Logistics.Handler;
+import UserInterface.Logistics.LoginPages.HandlerLogin;
 import UserInterface.MainFrameForm;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author harshaljaiswal
+ * @author Mayur
  */
 public class MainLogisticsPage extends javax.swing.JPanel {
 
     /**
      * Creates new form MainLogisticsPage
      */
-    
     MainFrameForm mainScreen;
     private DB4OUtil dB4OUtil;
     private EcoSystem ecoSystem;
-    
+
     public MainLogisticsPage(MainFrameForm mainScreen, DB4OUtil dB4OUtil, EcoSystem ecoSystem) {
         initComponents();
-        
+
         this.mainScreen = mainScreen;
         this.dB4OUtil = dB4OUtil;
         this.ecoSystem = ecoSystem;
@@ -159,54 +160,53 @@ public class MainLogisticsPage extends javax.swing.JPanel {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
 
-                if (cmb_Role.getSelectedItem().toString() == "Vehicle") {
-                    
-                    JOptionPane.showMessageDialog(this, "Vehicle not allow to login.");
-                }
-                 
-            //
-            //        }
-        //        if (cmb_Role.getSelectedItem().toString() == "Nurse") {
-            //            Restaurant r = system.loginResaturant(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                RestaurantMainPage restmp = new RestaurantMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(restmp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
+        if (cmb_Role.getSelectedItem().toString() == "Vehicle") {
+
+            JOptionPane.showMessageDialog(this, "Vehicle not allow to login.");
+        }
+
+        //
+        //        }
+        if (cmb_Role.getSelectedItem().toString() == "Handler") {
+            Handler ho = (Handler) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (ho == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                HandlerLogin ap = new HandlerLogin(mainScreen, dB4OUtil, ecoSystem, ho);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+
+        }
         //
         //        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-            //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
-            //
-            //            if (r == null) {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            } else {
-                //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
-                //                this.setContentPane(delimp);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            }
-            //
-            //        }
+        //            DeliveryMan r = system.loginDeliveryMan(txtUsername.getText(), txtPassword.getText());
+        //
+        //            if (r == null) {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            } else {
+        //                DeliverManMainPage delimp = new DeliverManMainPage(system, dB4OUtil, r);
+        //                this.setContentPane(delimp);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            }
+        //
+        //        }
         //
         //        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-            //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
-                //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
-                //                this.setContentPane(adminpg);
-                //                this.invalidate();
-                //                this.validate();
-                //                return;
-                //            } else {
-                //                JOptionPane.showMessageDialog(this, "Incorrect credential");
-                //            }
-            //        }
+        //            if (txtUsername.getText().matches("a") && txtPassword.getText().matches("a")) {
+        //                AdminPage adminpg = new AdminPage(system, dB4OUtil);
+        //                this.setContentPane(adminpg);
+        //                this.invalidate();
+        //                this.validate();
+        //                return;
+        //            } else {
+        //                JOptionPane.showMessageDialog(this, "Incorrect credential");
+        //            }
+        //        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
