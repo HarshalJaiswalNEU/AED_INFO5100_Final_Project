@@ -49,13 +49,18 @@ public class MainLabPage extends javax.swing.JPanel {
         lbl_pswd = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("LAB");
+        jLabel1.setText("Laboratory");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, -1, -1));
 
         lbl_role.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_role.setText("Role:");
+        add(lbl_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 140, -1, -1));
 
         cmb_Role.setEditable(true);
         cmb_Role.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -65,12 +70,17 @@ public class MainLabPage extends javax.swing.JPanel {
                 cmb_RoleActionPerformed(evt);
             }
         });
+        add(cmb_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 197, -1));
 
         lbl_username.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_username.setText("Username:");
+        add(lbl_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 197, -1));
 
         lbl_pswd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_pswd.setText("Password:");
+        add(lbl_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 197, -1));
 
         btn_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btn_login.setText("Login");
@@ -79,6 +89,10 @@ public class MainLabPage extends javax.swing.JPanel {
                 btn_loginActionPerformed(evt);
             }
         });
+        add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 360, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/laboratory.v1.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 770));
 
         btnSignin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSignin.setText("Sign Up");
@@ -87,54 +101,7 @@ public class MainLabPage extends javax.swing.JPanel {
                 btnSigninActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_role)
-                    .addComponent(lbl_username)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_pswd)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btn_login)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSignin))
-                        .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1117, 1117, 1117))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(530, 530, 530)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addComponent(lbl_role)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_username)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_pswd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_login)
-                    .addComponent(btnSignin))
-                .addContainerGap(355, Short.MAX_VALUE))
-        );
+        add(btnSignin, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_RoleActionPerformed
@@ -188,6 +155,7 @@ public class MainLabPage extends javax.swing.JPanel {
     private javax.swing.JButton btn_login;
     private javax.swing.JComboBox<String> cmb_Role;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbl_pswd;
     private javax.swing.JLabel lbl_role;
     private javax.swing.JLabel lbl_username;

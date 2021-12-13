@@ -31,6 +31,8 @@ public class DonateEntity {
     public String Status;
     public Handler Handler;
     public Technician technician;
+    private String report;
+    private String comm;
 
     public DonateEntity() {
 
@@ -147,6 +149,24 @@ public class DonateEntity {
     public void setTechnician(Technician technician) {
         this.technician = technician;
     }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+
+    public String getComm() {
+        return comm;
+    }
+
+    public void setComm(String comm) {
+        this.comm = comm;
+    }
+    
+    
     
 
 }

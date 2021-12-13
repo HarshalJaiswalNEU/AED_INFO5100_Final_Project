@@ -8,9 +8,11 @@ package UserInterface.Hospital.LoginPages.Doctor;
 import Business.DB4OUtil.DB4OUtil;
 import Business.EcoSystem.EcoSystem;
 import Business.Enterprise.Hospital.Doctor;
+import Business.Enterprise.Hospital.Patient;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +37,7 @@ public class DoctorLogin extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.doctor = d;
         populateTable(doctor.getUname());
+        populatePatientTable();
     }
 
     /**
@@ -49,7 +52,7 @@ public class DoctorLogin extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
@@ -58,11 +61,15 @@ public class DoctorLogin extends javax.swing.JPanel {
         jTextField2 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tb1 = new javax.swing.JTable();
+        tb2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txt_report = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         jTabbedPane1.setBackground(new java.awt.Color(51, 51, 51));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -73,9 +80,14 @@ public class DoctorLogin extends javax.swing.JPanel {
                 "Patient Name", "User Name", "Diagnosis"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tb1);
 
         jButton1.setText("Add Diagnosis");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Logout");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +129,11 @@ public class DoctorLogin extends javax.swing.JPanel {
         jTabbedPane1.addTab("Patient List", jPanel1);
 
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Logout");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -125,18 +142,29 @@ public class DoctorLogin extends javax.swing.JPanel {
             }
         });
 
-        tb1.setModel(new javax.swing.table.DefaultTableModel(
+        tb2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donar name"
+                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donor name", "ID"
             }
         ));
-        jScrollPane3.setViewportView(tb1);
+        jScrollPane3.setViewportView(tb2);
+
+        jLabel1.setText("Search by Name:");
+
+        jLabel2.setText("Status:");
+
+        jButton3.setText("Add Status");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,16 +173,24 @@ public class DoctorLogin extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton9)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                            .addComponent(txt_report))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jButton9)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -165,10 +201,16 @@ public class DoctorLogin extends javax.swing.JPanel {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_report, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton9)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Transplant History", jPanel2);
@@ -205,15 +247,96 @@ public class DoctorLogin extends javax.swing.JPanel {
         suc.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void populateTable(String name) {
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tb2.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to add status");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
+        String id = model.getValueAt(selectedRow, 8).toString();
+//System.out.println("column count " + selectedRow);
+
+        for (DonateEntity c : ecoSystem.getDonateEntityList()) {
+            try {
+                if (c.getId().equals(id)) {
+                    c.setStatus(txt_report.getText().toString());
+                }
+            } catch (Exception e) {
+
+            }
+        }
+
+        dB4OUtil.storeSystem(ecoSystem);
+        populateTable(doctor.getUname());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        populateTableName(jTextField2.getText().toLowerCase().toString());
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tb1.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to add status");
+            return;
+        }
+
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        String id = model.getValueAt(selectedRow, 1).toString();
+//System.out.println("column count " + selectedRow);
+
+        for (Patient p : ecoSystem.getPatientdirectory()) {
+            try {
+                if (p.getUname().equals(id)) {
+                    p.setDiagnosis(jTextField1.getText().toString());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        dB4OUtil.storeSystem(ecoSystem);
+        populatePatientTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void populatePatientTable() {
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (Patient p : ecoSystem.getPatientdirectory()) {
+            System.out.println("patient " + p.getUname());
+            try {
+                if (p.getHospname().equals(doctor.getHospname())) {
+                    Object[] row = new Object[10];
+                    row[0] = p.getName();
+                    row[1] = p.getUname();
+                    row[2] = p.getDiagnosis();
+                    model.addRow(row);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+    
+    private void populateTable(String name) {
+        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
         model.setRowCount(0);
         System.out.println("populatetable");
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
 
             try {
                 if (d.getReceiverDoctor().getUname().matches(name)) {
-                    Object[] row = new Object[8];
+                    Object[] row = new Object[10];
                     row[0] = d.getType();
                     row[1] = d.getBloodGroup();
                     row[2] = d.getEntityName();
@@ -239,6 +362,8 @@ public class DoctorLogin extends javax.swing.JPanel {
                     } catch (Exception e) {
 
                     }
+                    row[8] = d.getReport();
+                    row[9] = d.getId();
 
                     model.addRow(row);
                 }
@@ -250,21 +375,68 @@ public class DoctorLogin extends javax.swing.JPanel {
         }
 
     }
+    
+    private void populateTableName(String name) {
+        DefaultTableModel model = (DefaultTableModel) tb2.getModel();
+        model.setRowCount(0);
+        System.out.println("populatetable");
+        for (DonateEntity d : ecoSystem.getDonateEntityList()) {
+
+            if (d.getDonorDoctor().getUname().equals(name)) {
+                Object[] row = new Object[10];
+                row[0] = d.getType();
+                row[1] = d.getBloodGroup();
+                row[2] = d.getEntityName();
+                row[3] = d.getStatus();
+                try {
+                    row[4] = d.getDonorEnterprise().getEnterpriseName();
+                } catch (Exception e) {
+
+                }
+
+                try {
+                    row[5] = d.getReceiverEnterprise().getEnterpriseName();
+                } catch (Exception e) {
+
+                }
+                try {
+                    row[6] = d.getReceiverPatient().getName();
+                } catch (Exception e) {
+
+                }
+                try {
+                    row[7] = d.getDonorPatient().getName();
+                } catch (Exception e) {
+
+                }
+
+                row[8] = d.getReport();
+                row[9] = d.getId();
+                model.addRow(row);
+            }
+
+        }
+
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tb1;
+    private javax.swing.JTable tb2;
+    private javax.swing.JTextField txt_report;
     // End of variables declaration//GEN-END:variables
 }

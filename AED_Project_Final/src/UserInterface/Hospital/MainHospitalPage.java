@@ -45,18 +45,19 @@ public class MainHospitalPage extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbl_Hosptitle = new javax.swing.JLabel();
         cmb_Role = new javax.swing.JComboBox<>();
         lbl_username = new javax.swing.JLabel();
+        lbl_Hosptitle = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         lbl_pswd = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
         btnSignin = new javax.swing.JButton();
         lbl_role = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        lbl_Hosptitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbl_Hosptitle.setText("Hospital");
+        jPanel1.setBackground(new java.awt.Color(110, 89, 222));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmb_Role.setEditable(true);
         cmb_Role.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -66,12 +67,21 @@ public class MainHospitalPage extends javax.swing.JPanel {
                 cmb_RoleActionPerformed(evt);
             }
         });
+        jPanel1.add(cmb_Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 218, 197, -1));
 
         lbl_username.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_username.setText("Username:");
+        jPanel1.add(lbl_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 255, -1, -1));
+
+        lbl_Hosptitle.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbl_Hosptitle.setText("Hospital");
+        jPanel1.add(lbl_Hosptitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 37, 115, -1));
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 281, 197, -1));
 
         lbl_pswd.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_pswd.setText("Password:");
+        jPanel1.add(lbl_pswd, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 325, -1, -1));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 351, 197, -1));
 
         btn_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btn_login.setText("Login");
@@ -80,6 +90,7 @@ public class MainHospitalPage extends javax.swing.JPanel {
                 btn_loginActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 414, -1, -1));
 
         btnSignin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSignin.setText("Sign Up");
@@ -88,81 +99,24 @@ public class MainHospitalPage extends javax.swing.JPanel {
                 btnSigninActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSignin, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 414, -1, -1));
 
         lbl_role.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbl_role.setText("Role:");
+        jPanel1.add(lbl_role, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 192, 140, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(404, 404, 404)
-                .addComponent(lbl_Hosptitle, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(427, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(353, 353, 353)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_role)
-                        .addComponent(lbl_username)
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_pswd)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_login)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSignin))
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(354, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lbl_Hosptitle)
-                .addContainerGap(579, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(192, 192, 192)
-                    .addComponent(lbl_role)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(cmb_Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lbl_username)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(lbl_pswd)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(37, 37, 37)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_login)
-                        .addComponent(btnSignin))
-                    .addContainerGap(193, Short.MAX_VALUE)))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hospital1.jpg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1190, 1100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 904, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 638, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -175,53 +129,6 @@ public class MainHospitalPage extends javax.swing.JPanel {
             btnSignin.setEnabled(true);
         }
     }//GEN-LAST:event_cmb_RoleActionPerformed
-
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        // TODO add your handling code here:
-        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
-            Hospital ho = (Hospital) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
-            if(ho == null){
-                JOptionPane.showMessageDialog(this, "Incorrect credential");
-            }else{
-                AdminLogin ap = new AdminLogin(mainScreen, dB4OUtil, ecoSystem, ho);
-                mainScreen.setContentPane(ap);
-                mainScreen.invalidate();
-                mainScreen.validate();
-                return;
-            }
-
-        }
-
-        
-  
-        if (cmb_Role.getSelectedItem().toString() == "Patient") {
-            System.out.println("selecteditem");
-            Patient pa = (Patient) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
-            if (pa == null) {
-                JOptionPane.showMessageDialog(this, "Incorrect credential");
-            } else {
-                PatientLogin pl = new PatientLogin(mainScreen, dB4OUtil, ecoSystem, pa);
-                mainScreen.setContentPane(pl);
-                mainScreen.invalidate();
-                mainScreen.validate();
-                return;
-            }
-                    }
-
-        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
-            System.out.println("selecteditem");
-            Doctor dr = (Doctor) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
-            if (dr == null) {
-                JOptionPane.showMessageDialog(this, "Incorrect credential");
-            } else {
-                DoctorLogin dl = new DoctorLogin(mainScreen, dB4OUtil, ecoSystem, dr);
-                mainScreen.setContentPane(dl);
-                mainScreen.invalidate();
-                mainScreen.validate();
-                return;
-            }
-        }
-    }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btnSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSigninActionPerformed
         // TODO add your handling code here:
@@ -282,11 +189,57 @@ public class MainHospitalPage extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSigninActionPerformed
 
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        // TODO add your handling code here:
+        if (cmb_Role.getSelectedItem().toString() == "Hospital Admin") {
+            Hospital ho = (Hospital) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if(ho == null){
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            }else{
+                AdminLogin ap = new AdminLogin(mainScreen, dB4OUtil, ecoSystem, ho);
+                mainScreen.setContentPane(ap);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+
+        }
+
+        if (cmb_Role.getSelectedItem().toString() == "Patient") {
+            System.out.println("selecteditem");
+            Patient pa = (Patient) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (pa == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                PatientLogin pl = new PatientLogin(mainScreen, dB4OUtil, ecoSystem, pa);
+                mainScreen.setContentPane(pl);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+        }
+
+        if (cmb_Role.getSelectedItem().toString() == "Doctor") {
+            System.out.println("selecteditem");
+            Doctor dr = (Doctor) ecoSystem.loginCheck(txtUsername.getText(), txtPassword.getText());
+            if (dr == null) {
+                JOptionPane.showMessageDialog(this, "Incorrect credential");
+            } else {
+                DoctorLogin dl = new DoctorLogin(mainScreen, dB4OUtil, ecoSystem, dr);
+                mainScreen.setContentPane(dl);
+                mainScreen.invalidate();
+                mainScreen.validate();
+                return;
+            }
+        }
+    }//GEN-LAST:event_btn_loginActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSignin;
     private javax.swing.JButton btn_login;
     private javax.swing.JComboBox<String> cmb_Role;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_Hosptitle;
     private javax.swing.JLabel lbl_pswd;

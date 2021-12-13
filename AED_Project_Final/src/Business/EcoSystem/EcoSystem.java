@@ -340,6 +340,11 @@ public class EcoSystem {
                 return p;
             }
         }
+        for (Donor p : donordirectory) {
+            if (p.getUname().equals(patUname)) {
+                return p;
+            }
+        }
         return null;
     }
 

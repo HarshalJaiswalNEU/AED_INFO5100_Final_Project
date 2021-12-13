@@ -11,6 +11,7 @@ import Business.Enterprise.Logistics.Handler;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,13 +47,30 @@ public class HandlerLogin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb1 = new javax.swing.JTable();
+        jButton10 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txt_report = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Handler Login");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tb1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donor name", "ID"
+            }
+        ));
+        jScrollPane1.setViewportView(tb1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 871, 249));
 
         jButton10.setText("Logout");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -60,48 +78,22 @@ public class HandlerLogin extends javax.swing.JPanel {
                 jButton10ActionPerformed(evt);
             }
         });
+        add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, -1));
 
-        tb1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donar name"
+        jLabel1.setText("Status:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
+        add(txt_report, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 140, 30));
+
+        jButton1.setText("Add Status");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(tb1);
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(421, 421, 421)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jButton10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(263, 263, 263)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(431, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(jButton10)
-                .addGap(34, 34, 34))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logistics.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-350, -170, 2060, 1150));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -110,6 +102,33 @@ public class HandlerLogin extends javax.swing.JPanel {
         ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         suc.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tb1.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(this, "Please select a row to add status");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
+        String id = model.getValueAt(selectedRow, 8).toString();
+//System.out.println("column count " + selectedRow);
+
+        for (DonateEntity c : ecoSystem.getDonateEntityList()) {
+            try {
+                if (c.getId().equals(id)) {
+                    c.setStatus(txt_report.getText().toString());
+                }
+            } catch (Exception e) {
+
+            }
+        }
+
+        dB4OUtil.storeSystem(ecoSystem);
+        populateTable(ho.getUname());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void populateTable(String name) {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
@@ -145,6 +164,7 @@ public class HandlerLogin extends javax.swing.JPanel {
                 } catch (Exception e) {
 
                 }
+                row[8] = d.getId();
 
                 model.addRow(row);
             }
@@ -157,9 +177,12 @@ public class HandlerLogin extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb1;
+    private javax.swing.JTextField txt_report;
     // End of variables declaration//GEN-END:variables
 }

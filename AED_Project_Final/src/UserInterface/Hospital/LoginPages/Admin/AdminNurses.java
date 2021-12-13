@@ -49,6 +49,7 @@ public class AdminNurses extends javax.swing.JPanel {
         tblNurse = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("Manage Nurse");
 
         tblNurse.setModel(new javax.swing.table.DefaultTableModel(
@@ -97,7 +98,7 @@ public class AdminNurses extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(478, Short.MAX_VALUE))
+                .addContainerGap(472, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
