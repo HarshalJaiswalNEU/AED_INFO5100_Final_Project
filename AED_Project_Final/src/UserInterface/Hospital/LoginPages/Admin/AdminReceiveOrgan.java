@@ -147,7 +147,6 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
 
         add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 477, 585, 126));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,10 +154,8 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Blood");
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Search");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +163,6 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setText("Dual Search");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,7 +170,6 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Name:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -225,13 +220,11 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
 
         add(doc, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 649, 118, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Doctor:");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 653, -1, -1));
 
         add(recPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 689, 118, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Patient:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 693, -1, -1));
 
