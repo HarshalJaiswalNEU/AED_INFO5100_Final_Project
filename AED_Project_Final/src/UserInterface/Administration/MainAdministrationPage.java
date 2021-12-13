@@ -96,7 +96,7 @@ public class MainAdministrationPage extends javax.swing.JPanel {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        if (txtUsername.getText().toString().equals("a") && txtPassword.getText().toString().equals("a")) {
+        if (txtUsername.getText().toString().equals("Admin") && txtPassword.getText().toString().equals("Admin")) {
             AdministrationSplitPage ap = new AdministrationSplitPage(mainScreen, dB4OUtil, ecoSystem);
             
             mainScreen.setContentPane(ap);
