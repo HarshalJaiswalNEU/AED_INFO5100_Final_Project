@@ -61,8 +61,6 @@ public class SignUpDonorAdmin extends javax.swing.JPanel {
         txt_Zip = new javax.swing.JLabel();
         txtZip = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(54, 33, 89));
-
         lbl_admintitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_admintitle.setText("Create Donor Admin Profile");
 

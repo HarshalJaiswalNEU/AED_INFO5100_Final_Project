@@ -91,7 +91,6 @@ public class AdminPatient extends javax.swing.JPanel {
         jLabel1.setText("Manage Patient");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 22, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Delete");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

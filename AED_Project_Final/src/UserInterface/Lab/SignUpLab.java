@@ -70,8 +70,6 @@ public class SignUpLab extends javax.swing.JPanel {
         lbl_labname = new javax.swing.JLabel();
         txt_labname = new javax.swing.JTextField();
 
-        jPanel1.setBackground(new java.awt.Color(54, 33, 89));
-
         lbl_admintitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_admintitle.setText("Create Technician Profile");
 

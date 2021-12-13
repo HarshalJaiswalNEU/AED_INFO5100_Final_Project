@@ -80,8 +80,6 @@ public class PatientLogin extends javax.swing.JPanel {
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(54, 33, 89));
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Name:");
 
@@ -102,7 +100,6 @@ public class PatientLogin extends javax.swing.JPanel {
 
         txtName.setEditable(false);
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("Logout");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

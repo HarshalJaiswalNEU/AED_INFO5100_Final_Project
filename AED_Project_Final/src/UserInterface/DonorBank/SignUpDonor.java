@@ -73,8 +73,6 @@ public class SignUpDonor extends javax.swing.JPanel {
         lbl_donorbnkname = new javax.swing.JLabel();
         cmb_donorbnkname = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(54, 33, 89));
-
         lbl_admintitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_admintitle.setText("Create Donor Profile");
 
