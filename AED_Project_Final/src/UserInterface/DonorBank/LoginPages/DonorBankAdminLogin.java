@@ -55,6 +55,8 @@ public class DonorBankAdminLogin extends javax.swing.JPanel {
         btn_transplant1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
+        jPanel1.setBackground(new java.awt.Color(54, 33, 89));
+
         btn_donateOrgan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_donateOrgan.setText("Donate Organ");
         btn_donateOrgan.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +111,8 @@ public class DonorBankAdminLogin extends javax.swing.JPanel {
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_donateOrgan, btn_logout, btn_transplant1});
 
         jSplitPane1.setLeftComponent(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(54, 33, 89));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

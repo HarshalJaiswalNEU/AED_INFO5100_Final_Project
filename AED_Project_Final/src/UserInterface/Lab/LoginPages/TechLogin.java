@@ -62,6 +62,8 @@ public class TechLogin extends javax.swing.JPanel {
         btn_comm = new javax.swing.JButton();
         btn_search = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(54, 33, 89));
+
         lbl_title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_title.setText("Lab Technician Login");
 
@@ -110,6 +112,7 @@ public class TechLogin extends javax.swing.JPanel {
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("Logout");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +204,7 @@ public class TechLogin extends javax.swing.JPanel {
                     .addComponent(blood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(btn_search))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(jButton9)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

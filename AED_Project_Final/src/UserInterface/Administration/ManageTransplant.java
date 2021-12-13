@@ -9,7 +9,6 @@ import Business.EcoSystem.EcoSystem;
 import Business.Firebase.FirebaseHelper;
 import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,21 +44,25 @@ public class ManageTransplant extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tb1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(54, 33, 89));
 
         tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donar name", "Id"
+                "Type", "Blood group", "Entity name", "Status", "Donor Enterprise", "Receiver Enterprise", "Patient Name", "Donar name"
             }
         ));
         jScrollPane1.setViewportView(tb1);
 
+<<<<<<< Updated upstream
+=======
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Update Status");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,14 +70,19 @@ public class ManageTransplant extends javax.swing.JPanel {
             }
         });
 
+>>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
+            .addGap(0, 958, Short.MAX_VALUE)
+=======
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(704, Short.MAX_VALUE)
+                .addContainerGap(726, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(123, 123, 123))
+>>>>>>> Stashed changes
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(81, 81, 81)
@@ -83,10 +91,7 @@ public class ManageTransplant extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(452, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(147, 147, 147))
+            .addGap(0, 628, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(153, 153, 153)
@@ -95,41 +100,13 @@ public class ManageTransplant extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = tb1.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(this, "Please Select a row to delete.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tb1.getModel();
-        String id = model.getValueAt(selectedRow, 8).toString();
-        System.out.println(" handler uname: " + id);
-        
-        for(DonateEntity de : ecoSystem.getDonateEntityList()){
-            try{
-            if(de.getId().equals(id)){
-                de.setStatus(model.getValueAt(selectedRow, 3).toString());
-            }
-            }catch(Exception e){
-                
-            }
-        }
-        
-        dB4OUtil.storeSystem(ecoSystem);
-        JOptionPane.showMessageDialog(this, "Updated Status");
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) tb1.getModel();
         model.setRowCount(0);
         System.out.println("populatetable");
         for (DonateEntity d : ecoSystem.getDonateEntityList()) {
 
-            Object[] row = new Object[9];
+            Object[] row = new Object[8];
             row[0] = d.getType();
             row[1] = d.getBloodGroup();
             row[2] = d.getEntityName();
@@ -155,7 +132,6 @@ public class ManageTransplant extends javax.swing.JPanel {
             } catch (Exception e) {
 
             }
-            row[8] = d.getId();
 
             model.addRow(row);
 
@@ -164,7 +140,6 @@ public class ManageTransplant extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tb1;
     // End of variables declaration//GEN-END:variables

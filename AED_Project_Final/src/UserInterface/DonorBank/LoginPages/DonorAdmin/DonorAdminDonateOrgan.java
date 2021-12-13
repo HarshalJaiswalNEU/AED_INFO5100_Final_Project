@@ -66,6 +66,8 @@ public class DonorAdminDonateOrgan extends javax.swing.JPanel {
         btn_save = new javax.swing.JButton();
         donlist = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(54, 33, 89));
+
         lbl_title.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_title.setText("Add Entity Details");
 
