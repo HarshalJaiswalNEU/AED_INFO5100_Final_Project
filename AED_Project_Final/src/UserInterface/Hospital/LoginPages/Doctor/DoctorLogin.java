@@ -55,8 +55,8 @@ public class DoctorLogin extends javax.swing.JPanel {
         tb1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
@@ -88,7 +88,7 @@ public class DoctorLogin extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tb1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 6, -1, 199));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, 199));
 
         jButton1.setText("Add Diagnosis");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,11 +96,8 @@ public class DoctorLogin extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 252, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 252, 274, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hospital1.jpg"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-15, -34, 1090, 680));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, 274, -1));
 
         jButton8.setText("Logout");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +105,10 @@ public class DoctorLogin extends javax.swing.JPanel {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 287, -1, -1));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hospital1.jpg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-15, -34, 1450, 1030));
 
         jTabbedPane1.addTab("Patient List", jPanel1);
 
@@ -162,11 +162,11 @@ public class DoctorLogin extends javax.swing.JPanel {
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(583, 252, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hospital1.jpg"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-15, -34, 1350, 870));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-15, -34, 1490, 900));
 
         jTabbedPane1.addTab("Transplant History", jPanel2);
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, -1));
         jTabbedPane1.getAccessibleContext().setAccessibleName("Patient List");
     }// </editor-fold>//GEN-END:initComponents
 

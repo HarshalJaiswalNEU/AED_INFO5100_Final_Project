@@ -51,8 +51,8 @@ public class MainDonorBankPage extends javax.swing.JPanel {
         lbl_pswd = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btn_login = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         btnSignin = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,9 +93,6 @@ public class MainDonorBankPage extends javax.swing.JPanel {
         });
         add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 411, 86, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Donor2.v4.jpg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 750));
-
         btnSignin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSignin.setText("Sign Up");
         btnSignin.addActionListener(new java.awt.event.ActionListener() {
@@ -104,6 +101,9 @@ public class MainDonorBankPage extends javax.swing.JPanel {
             }
         });
         add(btnSignin, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 411, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Donor2.v4.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_RoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_RoleActionPerformed

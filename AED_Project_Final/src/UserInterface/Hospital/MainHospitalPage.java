@@ -232,6 +232,12 @@ public class MainHospitalPage extends javax.swing.JPanel {
                 return;
             }
         }
+        
+            if (cmb_Role.getSelectedItem().toString() == "Nurse") {
+
+                JOptionPane.showMessageDialog(this, "Not allowed to login.");
+            
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
 

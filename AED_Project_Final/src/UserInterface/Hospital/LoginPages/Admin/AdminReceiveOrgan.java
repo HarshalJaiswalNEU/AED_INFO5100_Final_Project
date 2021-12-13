@@ -229,7 +229,7 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 693, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hospital1.jpg"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1190, 890));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-5, -4, 1300, 910));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -318,11 +318,14 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
         for (Handler h : ecoSystem.getHandlerdirectory()) {
 
             Object[] row = new Object[5];
+            try{
             row[0] = h.getUname();
             row[1] = h.getVehicle().getVehname();
             row[2] = h.getVehicle().getVtype();
             row[3] = h.getVehicle().getVehnum();
             row[4] = h.getVehicle().getDescription();
+            } catch(Exception e){
+            }
             model.addRow(row);
 
         }
@@ -355,10 +358,14 @@ public class AdminReceiveOrgan extends javax.swing.JPanel {
             if (d.getBloodGroup().toLowerCase().contains(name)) {
                 Object[] row = new Object[5];
                 row[0] = d.getType();
+                try{
                 row[1] = d.getBloodGroup();
                 row[2] = d.getEntityName();
                 row[3] = d.getStatus();
                 row[4] =  d.getId();
+                } catch(Exception e){
+                    
+                }
                 model.addRow(row);
             }
 

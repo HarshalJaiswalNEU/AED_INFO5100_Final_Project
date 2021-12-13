@@ -74,8 +74,8 @@ public class SignUpHandler extends javax.swing.JPanel {
         txt_telenum = new javax.swing.JTextField();
         lbl_vehnum = new javax.swing.JLabel();
         txt_dob = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         cmb_vehicle = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -247,11 +247,11 @@ public class SignUpHandler extends javax.swing.JPanel {
         });
         add(txt_dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 477, 216, 27));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logistics.jpg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-510, -270, 1960, 1300));
-
         cmb_vehicle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         add(cmb_vehicle, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 522, 216, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Logistics.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-510, -270, 1960, 1300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
