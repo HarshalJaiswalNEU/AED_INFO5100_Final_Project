@@ -36,6 +36,12 @@ public class PatientLogin extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.dB4OUtil = dB4OUtil;
         this.patient = p;
+        
+        txtName.setText(p.getName());
+        txtUname.setText(p.getUname());
+        txtDiagnosis.setText(p.getDiagnosis());
+        txtHospital.setText(p.getHospname());
+        
         System.out.println("Patient login screen added");
         
         populateTable(patient.getUname());
@@ -80,11 +86,19 @@ public class PatientLogin extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Username:");
 
+        txtUname.setEditable(false);
+
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Diagnosis:");
 
+        txtDiagnosis.setEditable(false);
+
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel4.setText("Assigned Hospital:");
+        jLabel4.setText("Hospital:");
+
+        txtHospital.setEditable(false);
+
+        txtName.setEditable(false);
 
         jButton9.setText("Logout");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +124,9 @@ public class PatientLogin extends javax.swing.JPanel {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)))
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
@@ -122,6 +136,9 @@ public class PatientLogin extends javax.swing.JPanel {
                             .addComponent(txtDiagnosis))))
                 .addGap(371, 371, 371))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtName, txtUname});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()

@@ -61,12 +61,12 @@
                               </Group>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtUname" min="-2" pref="122" max="-2" attributes="0"/>
-                                  <Component id="txtName" pref="439" max="32767" attributes="0"/>
+                                  <Component id="txtUname" linkSize="1" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <Component id="txtName" linkSize="1" min="-2" pref="439" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -130,6 +130,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUname">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -140,18 +143,27 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDiagnosis">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="13" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Assigned Hospital:"/>
+                <Property name="text" type="java.lang.String" value="Hospital:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHospital">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtName">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton9">
               <Properties>

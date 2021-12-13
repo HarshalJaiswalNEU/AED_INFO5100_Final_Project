@@ -13,6 +13,7 @@ import Business.Organization.DonateEntity;
 import UserInterface.MainFrameForm;
 import static java.lang.Math.random;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,7 +150,7 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
         ecoSystem.addDonateEntity(de);
         
         dB4OUtil.storeSystem(ecoSystem);
-        
+        JOptionPane.showMessageDialog(this, "Entity added!");
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
