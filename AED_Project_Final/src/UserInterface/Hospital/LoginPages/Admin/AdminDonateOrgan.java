@@ -145,7 +145,7 @@ public class AdminDonateOrgan extends javax.swing.JPanel {
         de.setType(type.getText().toString());
         de.setDonorDoctor(ecoSystem.findDoctorByUserName(doctorList.getSelectedItem().toString()));
         de.setDonorPatient(ecoSystem.findPatientByUserName(patList.getSelectedItem().toString()));
-        de.setStatus("avaliable");
+        de.setStatus("available");
 //        System.out.println("dede: "+de.getDonorDoctor().getName());
         ecoSystem.addDonateEntity(de);
         
