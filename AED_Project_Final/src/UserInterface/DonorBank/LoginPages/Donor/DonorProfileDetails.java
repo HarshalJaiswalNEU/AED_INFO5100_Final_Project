@@ -62,6 +62,8 @@ public class DonorProfileDetails extends javax.swing.JPanel {
         lbl_donorbnkname = new javax.swing.JLabel();
         txtDonor = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(54, 33, 89));
+
         lbltitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbltitle.setText("Donor Profile Details");
 

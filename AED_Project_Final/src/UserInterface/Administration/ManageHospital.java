@@ -58,6 +58,8 @@ public class ManageHospital extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         tb4 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(54, 33, 89));
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Administration");
 
@@ -87,7 +89,12 @@ public class ManageHospital extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tb2);
 
+<<<<<<< Updated upstream
         jButton1.setText("check doctors");
+=======
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Get Details");
+>>>>>>> Stashed changes
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

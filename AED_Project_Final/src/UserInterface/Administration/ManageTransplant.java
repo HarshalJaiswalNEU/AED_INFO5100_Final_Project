@@ -45,6 +45,8 @@ public class ManageTransplant extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb1 = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(54, 33, 89));
+
         tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -58,11 +60,29 @@ public class ManageTransplant extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tb1);
 
+<<<<<<< Updated upstream
+=======
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Update Status");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+>>>>>>> Stashed changes
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< Updated upstream
             .addGap(0, 958, Short.MAX_VALUE)
+=======
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(726, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(123, 123, 123))
+>>>>>>> Stashed changes
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(81, 81, 81)

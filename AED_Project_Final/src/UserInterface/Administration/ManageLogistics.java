@@ -52,6 +52,8 @@ public class ManageLogistics extends javax.swing.JPanel {
         tb2 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(54, 33, 89));
+
         tb1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -65,7 +67,12 @@ public class ManageLogistics extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tb1);
 
+<<<<<<< Updated upstream
         jButton1.setText("jButton1");
+=======
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Delete");
+>>>>>>> Stashed changes
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,7 +92,12 @@ public class ManageLogistics extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tb2);
 
+<<<<<<< Updated upstream
         jButton2.setText("jButton1");
+=======
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton2.setText("Delete");
+>>>>>>> Stashed changes
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
