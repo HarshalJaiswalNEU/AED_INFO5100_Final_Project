@@ -2,4 +2,4 @@
 Final Assignment for the course AED INFO5100
 
 
-![Demonstration](https://github.com/HarshalJaiswalNEU/AED_INFO5100_Final_Project/blob/main/Screen.mp4)
+![Demonstration](https://github.com/HarshalJaiswalNEU/AED_INFO5100_Final_Project/blob/main/Scr.gif)
