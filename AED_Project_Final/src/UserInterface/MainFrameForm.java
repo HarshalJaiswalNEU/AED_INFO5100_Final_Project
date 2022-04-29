@@ -331,8 +331,8 @@ public class MainFrameForm extends javax.swing.JFrame {
             properties.setProperty("mail.smtp.socketFactory.fallback", "false");
             properties.setProperty("mail.smtp.port", "465");
             properties.setProperty("mail.smtp.socketFactory.port", "465");
-            String myAccountEmail = "harshaljaiswal25@gmail.com";
-            String password = "96655332139822204181jh";
+            String myAccountEmail = "";
+            String password = "";
             Session session;
             session = Session.getInstance(properties, new javax.mail.Authenticator() {
                 @Override
